@@ -1,0 +1,28 @@
+div {
+  color: #000;
+}
+
+.container {
+  background-color: #547696;
+}
+
+.information-box {
+  padding-top: 40px;
+}
+
+.information-box-1 {
+  background-color: #322a5e;
+  height: 300px;
+  margin-inline: 25px;
+  padding: 45px;
+  font-size: 25px;
+  color: #fff;
+  border-radius: 15px;
+}
+
+.review-box {
+  display: flex;
+  justify-content: space-between;
+  padding-inline: 30px;
+  padding-block: 30px;
+}
