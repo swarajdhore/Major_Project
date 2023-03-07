@@ -1,0 +1,19 @@
+.card-container {
+  height: 250px;
+  width: 300px;
+  background-color: #192836;
+  padding: 20px;
+  margin: 20px;
+  font-size: 20px;
+  border-radius: 20px;
+}
+
+.image-container {
+  height: 120px;
+  color: #fff;
+  padding-block: 10px;
+}
+
+.comments-container {
+  color: #fff;
+}

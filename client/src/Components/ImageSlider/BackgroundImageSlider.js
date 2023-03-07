@@ -39,8 +39,14 @@ function BackgroundImageSlider() {
       <div className="transparent-background"></div>
       <div className="description">
         <div>
-          <h1>{imageSlide[currentState].title}</h1>
-          <p>{imageSlide[currentState].body}</p>
+          {/* <Animate appear="fadeInDown" durationAppear={1000} component="h1"> */}
+          <h1 className="animated animatedFadeInUp fadeInUp">
+            {imageSlide[currentState].title}
+          </h1>
+          {/* </Animate> */}
+          <p className="animated animatedFadeInUp fadeInUp">
+            {imageSlide[currentState].body}
+          </p>
         </div>
         <div className="carousal-boult">
           {imageSlide.map((imageSlide, currentState) => (
@@ -51,17 +57,15 @@ function BackgroundImageSlider() {
           ))}
         </div>
         <div>
-          <button class="btn">
-            {" "}
+          <button className="btn">
             <a href="/buy">Buy</a>
           </button>
 
-          <button class="btn">
-            {" "}
-            <a href="/sell">Sell </a>
+          <button className="btn">
+            <a href="/sell">Sell</a>
           </button>
 
-          <button class="btn">Customize</button>
+          <button className="btn">Customize</button>
         </div>
       </div>
     </>

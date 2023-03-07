@@ -2,127 +2,126 @@
 pragma solidity ^0.8.0;
 
 contract VehicleManagement {
-    address public owner;
-    uint256 public numVehicles;
-    mapping(uint256 => Vehicle) public vehicles;
-    mapping(address => mapping(uint256 => uint256[])) public ownerToVehicles;
-
     struct Vehicle {
+        uint256 id;
         string make;
         string model;
         uint256 year;
         address owner;
-        bool isRegistered;
-        uint256[] ownerHistory;
+        mapping(uint256 => mapping(uint256 => address)) ownerHistory;
+        uint256 ownerHistoryCount;
+        uint256 price;
+        bool priceSet;
+    }
+    struct User {
+        address userAdd;
+        uint256 currentVehicles;
     }
 
-    event VehicleRegistered(
-        uint256 vehicleId,
-        string make,
-        string model,
-        uint256 year,
-        address owner
-    );
-    event VehicleTransferred(
-        uint256 vehicleId,
-        address previousOwner,
-        address newOwner
-    );
+    bool autoTransfer = false;
+    mapping(uint256 => Vehicle) public vehicles;
+    mapping(address => User) public users;
+    mapping(address => uint256[]) public vehicleOwned;
+    uint256 public totalVehicles;
 
-    constructor() {
-        owner = msg.sender;
+    function getBalance() external view returns (uint256) {
+        return address(this).balance;
     }
 
-    modifier onlyOwner() {
-        require(msg.sender == owner, "Only the owner can perform this action");
-        _;
+    receive() external payable {}
+
+    function setVehiclePrice(uint256 _id, uint256 _price) public {
+        User storage user = users[msg.sender];
+        require(_id < totalVehicles, "Invalid vehicle ID");
+        Vehicle storage vehicle = vehicles[_id];
+        require(
+            vehicle.owner == msg.sender,
+            "Only the current owner can set the price of the vehicle"
+        );
+        vehicle.price = _price;
+        vehicle.priceSet = true;
     }
 
-    function registerVehicle(
+    function buyVehicle(uint256 _id) public payable {
+        require(_id < totalVehicles, "Invalid vehicle ID");
+
+        Vehicle storage vehicle = vehicles[_id];
+        require(vehicle.priceSet == true, "Vehicle not for sale");
+        require(vehicle.owner != address(0), "Vehicle does not exist");
+        require(
+            (msg.value / 1 ether) == vehicle.price,
+            "Insufficient funds to buy the vehicle"
+        );
+
+        address payable seller = payable(vehicle.owner);
+        seller.transfer(msg.value);
+        autoTransfer = true;
+        User storage user = users[vehicle.owner];
+        user.currentVehicles--;
+        transferVehicle(_id, msg.sender);
+        autoTransfer = false;
+        vehicle.priceSet = false;
+    }
+
+    function addVehicle(
         string memory _make,
         string memory _model,
         uint256 _year
     ) public {
-        require(bytes(_make).length > 0, "Make is required");
-        require(bytes(_model).length > 0, "Model is required");
-        require(_year > 0, "Year is required");
-        numVehicles++;
-        vehicles[numVehicles] = Vehicle(
-            _make,
-            _model,
-            _year,
-            msg.sender,
-            true,
-            new uint256[](0)
-        );
-        vehicles[numVehicles].ownerHistory.push(block.timestamp);
-        ownerToVehicles[msg.sender][numVehicles].push(block.timestamp);
-        emit VehicleRegistered(numVehicles, _make, _model, _year, msg.sender);
+        User storage user = users[msg.sender];
+        Vehicle storage newVehicle = vehicles[totalVehicles];
+        newVehicle.id = totalVehicles;
+        newVehicle.make = _make;
+        newVehicle.model = _model;
+        newVehicle.year = _year;
+        newVehicle.owner = msg.sender;
+        newVehicle.ownerHistoryCount = 1;
+        newVehicle.ownerHistory[0][totalVehicles] = msg.sender;
+        totalVehicles++;
+        user.currentVehicles++;
+        vehicleOwned[msg.sender].push(newVehicle.id);
     }
 
-    function transferVehicle(uint256 _vehicleId, address _newOwner) public {
+    function transferVehicle(uint256 _id, address _newOwner) public {
+        require(_id < totalVehicles, "Invalid vehicle ID");
+        User storage user = users[msg.sender];
+        Vehicle storage vehicle = vehicles[_id];
         require(
-            _vehicleId > 0 && _vehicleId <= numVehicles,
-            "Invalid vehicle ID"
-        );
-        Vehicle storage vehicle = vehicles[_vehicleId];
-        require(vehicle.isRegistered, "Vehicle is not registered");
-        require(
-            msg.sender == vehicle.owner,
+            vehicle.owner == msg.sender || autoTransfer == true,
             "Only the current owner can transfer the vehicle"
         );
-        require(_newOwner != address(0), "New owner is required");
+        vehicle.ownerHistory[vehicle.ownerHistoryCount][_id] = _newOwner;
+        vehicle.ownerHistoryCount++;
+        // if (vehicle.ownerHistoryCount == 0) {
+        user.currentVehicles++;
+        // }
+
+        uint256[] storage ownerVehicles = vehicleOwned[msg.sender];
+        for (uint256 i = 0; i < ownerVehicles.length; i++) {
+            if (ownerVehicles[i] == _id) {
+                ownerVehicles[i] = ownerVehicles[ownerVehicles.length - 1];
+                ownerVehicles.pop();
+                break;
+            }
+        }
+
+        vehicleOwned[_newOwner].push(_id);
         vehicle.owner = _newOwner;
-        vehicle.ownerHistory.push(block.timestamp);
-        ownerToVehicles[_newOwner][_vehicleId].push(block.timestamp);
-        emit VehicleTransferred(_vehicleId, msg.sender, _newOwner);
     }
 
-    function getVehicle(uint256 _vehicleId)
+    function getVehicleOwnerHistory(uint256 _id)
         public
         view
-        returns (
-            string memory,
-            string memory,
-            uint256,
-            address,
-            bool,
-            uint256[] memory
-        )
+        returns (address[] memory)
     {
-        require(
-            _vehicleId > 0 && _vehicleId <= numVehicles,
-            "Invalid vehicle ID"
+        require(_id < totalVehicles, "Invalid vehicle ID");
+        Vehicle storage vehicle = vehicles[_id];
+        address[] memory ownerHistoryList = new address[](
+            vehicle.ownerHistoryCount
         );
-        Vehicle memory vehicle = vehicles[_vehicleId];
-        return (
-            vehicle.make,
-            vehicle.model,
-            vehicle.year,
-            vehicle.owner,
-            vehicle.isRegistered,
-            vehicle.ownerHistory
-        );
-    }
-
-    function getVehicleHistory(uint256 _vehicleId)
-        public
-        view
-        returns (uint256[] memory)
-    {
-        require(
-            _vehicleId > 0 && _vehicleId <= numVehicles,
-            "Invalid vehicle ID"
-        );
-        Vehicle memory vehicle = vehicles[_vehicleId];
-        return vehicle.ownerHistory;
-    }
-
-    function getOwnerVehicles(address _owner)
-        public
-        view
-        returns (uint256[] memory)
-    {
-        return ownerToVehicles[_owner][numVehicles];
+        for (uint256 i = 0; i < vehicle.ownerHistoryCount; i++) {
+            ownerHistoryList[i] = vehicle.ownerHistory[i][_id];
+        }
+        return ownerHistoryList;
     }
 }

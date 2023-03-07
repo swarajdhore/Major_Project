@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<head>
+    <title>CAR RECOMMENDATION</title>
+</head>
+<body style = "background-color:rgb(97, 151, 151); width:1020px;height:720px;border:4px solid rgb(23, 22, 22); margin-left: 18%;">
+
+    <div style="margin-top: 10%; font-style: italic;">
+        <center>
+        <h1>Registration Form</h1>
+        <hr>
+        </center>
+    </div>
+
+    <div style="box-sizing: Form ; font-size: 100%;">
+        <center>
+            <form method="post" , action="{{url_for('home')}}">
+            <p>Year : <input type="int" name = "year"></p><br>
+
+            <label for="sp">Selling price</label>
+            <select id="sp" name="sp">
+            <option value=100000>less than 100000</option>
+            <option value=200000>100000 to 300000</option>
+            <option value=400000>300000 to 500000</option>
+            <option value=600000>500000 to 700000</option>
+            <option value=800000>700000 to 900000</option>
+            <option value=1000000>900000 to 1100000</option>
+            </select><br><br>
+
+
+            <label for="km">km_driven</label>
+            <select id="km" name="km">
+            <option value=5000>less than 10000</option>
+            <option value=20000>10000 to 30000</option>
+            <option value=40000>30000 to 50000</option>
+            <option value=60000>50000 to 70000</option>
+            <option value=80000>70000 to 90000</option>
+            <option value=100000>90000 to 110000</option>
+            <option value=120000>110000 to 130000</option>
+            <option value=150000>Greater than 130000</option>
+            </select><br><br>
+
+            
+            
+            <label for="flue">Fuel</label>
+            <select id="fuel" name="fuel">
+            <option value=1>Petrol</option>
+            <option value=2>Diesel</option>
+            <option value=3>CNG</option>
+            </select><br><br>
+
+            <label for="transmission">transmission</label>
+            <select id="transmission" name="transmission">
+            <option value=0>Manual</option>
+            <option value=1>Automatic</option>
+            </select><br><br>
+
+            <label for="owner">owner</label>
+            <select id="owner" name="owner">
+            <option value=1>1st</option>
+            <option value=2>2nd</option>
+            <option value=3>3rd</option>
+            <option value=4>4th and above</option>
+            </select><br><br>
+
+            <p>mileage	engine   : <input type="float" name = "mileage"></p><br>
+            <p>max_power   : <input type="float" name = "power"></p><br>
+            <p>seats   : <input type="int" name = "seats"></p><br>
+            <p><center><button style= "margin: 4%; width: 20%; height: 8%; "  type="submit" value="predict">Submit
+            </button>
+            <button style = "width: 20%; height: 8%; " type="button">Cancel</button></center>
+        </form>
+        </center>
+    </div>
+</body>

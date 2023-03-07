@@ -3,9 +3,13 @@
   position: relative;
 }
 
+@import url("https://fonts.googleapis.com/css2?family=Hind:wght@500&family=Lato:wght@300&family=Poppins&display=swap");
+
 .bg-image {
   opacity: 1;
   z-index: -1;
+  transition: all 5s;
+  /* position: relative; */
 
   /* background-image: linear-gradient(white, black), url(image.png); */
 }
@@ -45,6 +49,8 @@
   color: #000;
   top: 30%;
   left: 10%;
+  /* font-family: "Poppins", sans-seri; */
+  font-family: "Hind", sans-serif;
 }
 
 .description h1 {
@@ -91,10 +97,6 @@
   overflow: hidden;
 }
 
-.btn {
-  background-color: #000;
-}
-
 .btn:hover {
   color: black;
   background-color: #000;
@@ -119,14 +121,53 @@
   transition: all 0.5s;
 }
 
-a:link {
+/* a:link {
   text-decoration: none;
-  /* background-color: rgb(224, 224, 224); */
+  /* background-color: rgb(224, 224, 224); 
+} */
+
+/* a:visited {
+  text-decoration: none;
+  /* background-color: rgb(224, 224, 224); 
+  /* background-color: transparent; 
+  background-color: none;
+} */
+
+@keyframes fadeInUp {
+  from {
+    transform: translate3d(0, 40px, 0);
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
 }
 
-a:visited {
-  text-decoration: none;
-  /* background-color: rgb(224, 224, 224);
-  background-color: transparent; */
-  background-color: none;
+@-webkit-keyframes fadeInUp {
+  from {
+    transform: translate3d(0, 40px, 0);
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+
+.animated {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+}
+
+.animatedFadeInUp {
+  opacity: 0;
+}
+
+.fadeInUp {
+  opacity: 0;
+  animation-name: fadeInUp;
+  -webkit-animation-name: fadeInUp;
 }

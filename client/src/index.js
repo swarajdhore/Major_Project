@@ -10,6 +10,7 @@ import Sell from "./Pages/Sell";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
+import Register from "./Pages/Register";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
   {
     path: "/sell",
     element: <Sell />,
+  },
+  {
+    path: "/register",
+    element: <Register />,
   },
 ]);
 

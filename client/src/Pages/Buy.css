@@ -1,5 +1,5 @@
 .buy-container {
-  background-color: #302130;
+  background-color: #d7d2d8;
   height: 100vh;
 }
 
@@ -29,5 +29,13 @@
   padding-inline: 20px;
   font-size: 20px;
   color: #a9916e;
+  /* background-color: #302130; */
+}
+
+.search-bar {
   background-color: #302130;
+}
+
+.body {
+  height: 60vh;
 }
