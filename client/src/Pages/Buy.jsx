@@ -112,7 +112,13 @@ function Buy() {
 
                 <button type="submit">Submit</button>
               </form>
-              <div>Result: {result}</div>
+              {/* <div>Result: {result}</div> */}
+              <div className="flex">
+                {result.map(url => (
+                  <img src={process.env.PUBLIC_URL + '/images/Cars/' + url + '.jpg'} alt={url} />
+                ))}
+              </div>
+              {/* <img src={process.env.PUBLIC_URL + '/images/Cars/' + result[0] + '.jpg'} alt="My Image" /> */}
             </div>
           </div>
           {/* <div className="body">
