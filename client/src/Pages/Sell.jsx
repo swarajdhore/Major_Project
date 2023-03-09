@@ -3,9 +3,13 @@ import Navbar from "../Components/Navbar/Navbar";
 import Footer from "../Components/Footer/Footer";
 import SearchBar from "../Components/UI/SearchBar/SearchBar";
 import Card from "../Components/UI/Card/Card";
-
 import "./Sell.css";
+// import dotenv from 'dotenv';
+// const path = require('path')
 
+// require('dotenv').config({
+//   path: require("path").resolve(__dirname, "../../.env"),
+// })
 function Sell() {
 
   const [inputData, setInputData] = useState({
@@ -25,7 +29,8 @@ function Sell() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     console.log(inputData);
-    const response = await fetch("http://127.0.0.1:4000/predict_price", {
+
+    const response = await fetch(`http://localhost:5000/predict_price`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

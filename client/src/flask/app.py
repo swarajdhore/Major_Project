@@ -8,10 +8,13 @@ import pickle
 import jsonpickle
 from flask_cors import CORS, cross_origin
 
-
+# from dotenv import load_dotenv
+# dotenv_path = './.env'
+# load_dotenv(dotenv_path)
 
 df_new = pickle.load(open('./src/flask/df_new.pkl','rb'))
 app=Flask(__name__,template_folder= "./src/flask")
+# host_id = os.environ.get('HOST_ID')
 CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})
 app.config['CORS_HEADERS'] = 'Content-Type'
 
@@ -72,4 +75,4 @@ def process_data():
     
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+    app.run(host='localhost',debug=True, port=4000)

@@ -3,9 +3,13 @@ import Navbar from "../Components/Navbar/Navbar";
 import Footer from "../Components/Footer/Footer";
 import SearchBar from "../Components/UI/SearchBar/SearchBar";
 import Card from "../Components/UI/Card/Card";
-
 import "./Buy.css";
+// import dotenv from 'dotenv';
 
+// const path = require('path')
+// require('dotenv').config({
+//   path: require("path").resolve(__dirname, "../../.env"),
+// })
 function Buy() {
   const [inputData, setInputData] = useState({
     year: "",
@@ -23,7 +27,8 @@ function Buy() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     console.log(inputData);
-    const response = await fetch("http://127.0.0.1:5000/process_data", {
+    // const host_id = process.env.HOST_ID;
+    const response = await fetch(`http://localhost:4000/process_data`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -113,13 +118,18 @@ function Buy() {
                 <button type="submit">Submit</button>
               </form>
               {/* <div>Result: {result}</div> */}
-              <div className="flex">
-                {result.map(url => (
-                  <img src={process.env.PUBLIC_URL + '/images/Cars/' + url + '.jpg'} alt={url} />
-                ))}
-              </div>
-              {/* <img src={process.env.PUBLIC_URL + '/images/Cars/' + result[0] + '.jpg'} alt="My Image" /> */}
+
+
             </div>
+
+          </div>
+          <div className="flex">
+            {Object.keys(result).map((key) => (
+              <div key={key}>
+                <img src={process.env.PUBLIC_URL + '/images/Cars/' + result[key] + '.jpg'} alt={result[key]} />
+              </div>
+            ))}
+
           </div>
           {/* <div className="body">
           Hi

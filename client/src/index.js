@@ -29,6 +29,12 @@ const router = createBrowserRouter([
     path: "/register",
     element: <Register />,
   },
+  // {
+  //   path: "/predict_price",
+  // },
+  // {
+  //   path: "/process_data",
+  // },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
