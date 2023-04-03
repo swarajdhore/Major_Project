@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { ethers } from "ethers";
 
 import Navbar from "../Components/Navbar/Navbar";
 import BackgroundImageSlider from "../Components/ImageSlider/BackgroundImageSlider";

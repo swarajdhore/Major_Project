@@ -1,18 +1,17 @@
-* {
+/* * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
+} */
 
-.app {
+/* .app {
   height: 100vh;
   text-align: center;
   color: #fff;
   top: 0;
-  /* background-color: #fff; */
+  
   text-decoration: none;
   list-style: none;
-  /* background-color: #333; */
-  /* background-color: #64778d; */
+  
   overflow-y: auto;
-}
+} */

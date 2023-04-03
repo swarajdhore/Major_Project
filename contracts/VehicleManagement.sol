@@ -18,9 +18,17 @@ contract VehicleManagement {
         uint256 currentVehicles;
     }
 
+    struct UserDetails {
+        string name;
+        uint age;
+        string email;
+        bool exists;
+    }
+
     bool autoTransfer = false;
     mapping(uint256 => Vehicle) public vehicles;
     mapping(address => User) public users;
+    mapping(address => UserDetails) public userdetails;
     mapping(address => uint256[]) public vehicleOwned;
     uint256 public totalVehicles;
 
@@ -40,6 +48,26 @@ contract VehicleManagement {
         );
         vehicle.price = _price;
         vehicle.priceSet = true;
+    }
+
+    function register(
+        string memory name,
+        uint age,
+        string memory email
+    ) public {
+        require(!userdetails[msg.sender].exists, "User already exists");
+        userdetails[msg.sender] = UserDetails(name, age, email, true);
+    }
+
+    function getUserDetails(
+        address _user
+    ) public view returns (string memory, uint, string memory) {
+        require(userdetails[_user].exists, "User does not exist");
+        return (
+            userdetails[_user].name,
+            userdetails[_user].age,
+            userdetails[_user].email
+        );
     }
 
     function buyVehicle(uint256 _id) public payable {
@@ -109,11 +137,9 @@ contract VehicleManagement {
         vehicle.owner = _newOwner;
     }
 
-    function getVehicleOwnerHistory(uint256 _id)
-        public
-        view
-        returns (address[] memory)
-    {
+    function getVehicleOwnerHistory(
+        uint256 _id
+    ) public view returns (address[] memory) {
         require(_id < totalVehicles, "Invalid vehicle ID");
         Vehicle storage vehicle = vehicles[_id];
         address[] memory ownerHistoryList = new address[](

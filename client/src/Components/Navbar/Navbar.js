@@ -1,16 +1,53 @@
 import React from "react";
 import "./Navbar.css";
+import VehicleManagement from "../../artifacts/contracts/VehicleManagement.sol/VehicleManagement.json";
 import { useState, useEffect } from "react";
 import { ethers } from "ethers";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
+import Register from "../UI/Modal/Register";
+
+const contractAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
 
 function Navbar() {
-  const [account, setAccount] = useState("");
+  const [account, setAccount] = useState(localStorage.getItem("account") || "");
   const [contract, setContract] = useState(null);
   const [provider, setProvider] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
   const [buttonClicked, setButtonClicked] = useState(false);
+
+  const [isRegistered, setIsRegistered] = useState(false);
+
+  async function checkRegistrationStatus() {
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+
+    const contract = new ethers.Contract(
+      contractAddress,
+      VehicleManagement.abi,
+      provider
+    );
+
+    const accounts = await provider.listAccounts().then((accounts) => {
+      const currentAccount = accounts[0];
+      setAccount(currentAccount);
+      localStorage.setItem("account", currentAccount);
+    });
+
+    let isUserRegistered = false;
+    for (let i = 0; i < accounts.length; i++) {
+      const registered = await contract.isRegistered(accounts[i]);
+      if (registered) {
+        isUserRegistered = true;
+        break;
+      }
+    }
+    if (isUserRegistered) {
+      // Display a message to the user indicating that one of their accounts is already registered
+      alert("One of your accounts is already registered.");
+      return;
+    }
+    setIsRegistered(isUserRegistered);
+  }
 
   const isMetaMaskInstalled = async () => {
     if (typeof window.ethereum !== "undefined") {
@@ -31,6 +68,7 @@ function Navbar() {
             const signer = provider.getSigner();
             const address = await signer.getAddress();
             setAccount(address);
+            checkRegistrationStatus();
           } catch (e) {
             setButtonClicked(false);
           }
@@ -173,13 +211,13 @@ function Navbar() {
               <button className="button">LogIn</button>
             </a>
             <a
-              href="/register"
+              // href="/register"
               class="block px-4 py-2 text-sm text-gray-700"
               role="menuitem"
               tabindex="-1"
               id="user-menu-item-0"
             >
-              <button className="button">
+              <button className="button" onClick={handleButtonClick}>
                 {" "}
                 {/* onClick={handleButtonClick} */}
                 Register
@@ -295,6 +333,18 @@ function Navbar() {
           </a> */}
       {/* </div> */}
       {/* </div> */}
+
+      <div>
+        {window.ethereum ? (
+          isRegistered ? (
+            <p>You are already registered.</p>
+          ) : (
+            <Register />
+          )
+        ) : (
+          <p>Please connect your Metamask wallet to register.</p>
+        )}
+      </div>
     </nav>
   );
 }

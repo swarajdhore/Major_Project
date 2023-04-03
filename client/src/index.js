@@ -6,11 +6,13 @@ import StartPage from "./Pages/StartPage";
 import App from "./App";
 import Buy from "./Pages/Buy";
 import Sell from "./Pages/Sell";
+import Profile from "./Pages/Profile";
+import Temp from "./Components/UI/Temp";
 // import "./App.css";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
-import Register from "./Pages/Register";
+import Register from "./Components/UI/Modal/Register";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +30,14 @@ const router = createBrowserRouter([
   {
     path: "/register",
     element: <Register />,
+  },
+  {
+    path: "/profile",
+    element: <Profile />,
+  },
+  {
+    path: "/temp",
+    element: <Temp />,
   },
   // {
   //   path: "/predict_price",
