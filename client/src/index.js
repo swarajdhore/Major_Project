@@ -7,7 +7,6 @@ import App from "./App";
 import Buy from "./Pages/Buy";
 import Sell from "./Pages/Sell";
 import Profile from "./Pages/Profile";
-import Temp from "./Components/UI/Temp";
 // import "./App.css";
 
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -35,16 +34,6 @@ const router = createBrowserRouter([
     path: "/profile",
     element: <Profile />,
   },
-  {
-    path: "/temp",
-    element: <Temp />,
-  },
-  // {
-  //   path: "/predict_price",
-  // },
-  // {
-  //   path: "/process_data",
-  // },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
