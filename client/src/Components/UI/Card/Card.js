@@ -2,11 +2,12 @@ import React from "react";
 
 import "./Card.css";
 
-function Card() {
+function Card({ alt, name }) {
   return (
     <div className="card-container">
-      <div className="image-container">Image</div>
-      <div className="comments-container">Comments</div>
+      <img className="image-container" src="hello" alt={alt} />
+      <div className="comments-container">{name}</div>
+      {alt}
     </div>
   );
 }

@@ -68,10 +68,9 @@ const Register = () => {
             onOpen={() => dispatch({ type: 'OPEN_MODAL' })}
             onClose={() => dispatch({ type: 'CLOSE_MODAL' })}
             trigger={<a
-              href=""
               class="block px-4 py-2 text-sm text-gray-700"
               role="menuitem"
-              tabindex="-1"
+
               id="user-menu-item-0"
             >
               <button className="button">

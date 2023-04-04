@@ -20,7 +20,8 @@
   "scripts": {
     "start-api": "python ./src/flask/app.py",
     "start-api-pricepred": "python ./src/flask/pricepred.py",
-    "start": "concurrently \"npm run start-api\" \"npm run start-api-pricepred\" \"react-scripts start\"",
+    "start-api-chatbot": "python ./src/flask/chatgui.py",
+    "start": "concurrently \"npm run start-api\" \"npm run start-api-pricepred\" \"npm run start-api-chatbot\" \"react-scripts start\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

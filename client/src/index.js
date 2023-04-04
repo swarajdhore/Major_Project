@@ -7,6 +7,7 @@ import App from "./App";
 import Buy from "./Pages/Buy";
 import Sell from "./Pages/Sell";
 import Profile from "./Pages/Profile";
+import CarPage from "./Pages/CarPage";
 // import "./App.css";
 
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
   {
     path: "/profile",
     element: <Profile />,
+  },
+  {
+    path: "/car-information",
+    element: <CarPage />,
   },
 ]);
 

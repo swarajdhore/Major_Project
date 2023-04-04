@@ -9,9 +9,9 @@ import json
 import jsonpickle
 from sklearn.preprocessing import StandardScaler
 from flask_cors import CORS, cross_origin
-from dotenv import load_dotenv
-dotenv_path = './.env'
-load_dotenv(dotenv_path)
+# from dotenv import load_dotenv
+# dotenv_path = './.env'
+# load_dotenv(dotenv_path)
 
 df_old = pickle.load(open('./src/flask/pricepreddf.pkl','rb'))
 df = pickle.load(open('./src/flask/pricepreddf2.pkl','rb'))

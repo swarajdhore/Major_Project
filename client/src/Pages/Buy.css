@@ -1,6 +1,6 @@
 .buy-container {
   background-color: #d7d2d8;
-  height: 100vh;
+  height: 180vh;
 }
 
 .navbar {
@@ -38,4 +38,15 @@
 
 .body {
   height: 60vh;
+}
+
+.item {
+  position: relative;
+  padding: 0 2px;
+  transition: 250ms all;
+}
+
+.item:hover {
+  margin: 0 40px;
+  transform: scale(1.2);
 }

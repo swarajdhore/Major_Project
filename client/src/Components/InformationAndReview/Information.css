@@ -3,7 +3,8 @@ div {
 }
 
 .container {
-  background-color: #547696;
+  /* background-color: #547696; */
+  background-color: #000000;
 }
 
 .information-box {
@@ -11,13 +12,16 @@ div {
 }
 
 .information-box-1 {
-  background-color: #322a5e;
+  /* background-color: #322a5e; */
+  background-color: #dc5f00;
+  border: 8px #000;
   height: 300px;
   margin-inline: 25px;
   padding: 45px;
   font-size: 25px;
   color: #fff;
   border-radius: 15px;
+  text-decoration: none;
 }
 
 .review-box {
@@ -26,3 +30,59 @@ div {
   padding-inline: 30px;
   padding-block: 30px;
 }
+
+.scroll-animation {
+  opacity: 0;
+  transform: translateY(50px);
+  animation: fadeInUp 0.5s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* @keyframes fadeInUp {
+  from {
+    transform: translate3d(0, 40px, 0);
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeInUp {
+  from {
+    transform: translate3d(0, 40px, 0);
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+
+.animated {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+}
+
+.animatedFadeInUp {
+  opacity: 0;
+}
+
+.fadeInUp {
+  opacity: 0;
+  animation-name: fadeInUp;
+  -webkit-animation-name: fadeInUp;
+} */

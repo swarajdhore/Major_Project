@@ -1,17 +1,20 @@
-/* * {
+@import url("https://fonts.googleapis.com/css2?family=Hind:wght@500&family=Lato:wght@300&family=Poppins&family=Ubuntu:wght@300&display=swap");
+
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-} */
+}
 
-/* .app {
+.app {
   height: 100vh;
   text-align: center;
   color: #fff;
   top: 0;
-  
+  /* background-color: #fff; */
   text-decoration: none;
   list-style: none;
-  
-  overflow-y: auto;
-} */
+  /* background-color: #333; */
+  /* background-color: #64778d; */
+  overflow-y: hidden;
+}

@@ -1,0 +1,43 @@
+@import url("https://fonts.googleapis.com/css2?family=Hind:wght@500&family=Lato:wght@300&family=Poppins&family=Ubuntu:wght@300&display=swap");
+
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 400px;
+  border-radius: 40px;
+
+  background-color: #d7d2d8;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.image-element {
+  width: 200px;
+}
+
+.form-heading {
+  font-size: 25px;
+  font-family: "Ubuntu", sans-serif;
+}
+
+label {
+  font-size: 20px;
+}
+
+.input-box {
+  margin: 15px;
+  height: 35px;
+  width: 250px;
+  border-radius: 5px;
+}
+
+.select-box {
+  margin: 15px;
+  height: 35px;
+  width: 250px;
+}
