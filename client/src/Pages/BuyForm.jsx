@@ -3,6 +3,7 @@ import Form from "../Components/UI/Form/Form";
 import ToggleVisiblity from "../Components/UI/ToggleVisiblity";
 import CarDetails from "../Components/CarDetails/CarDetails";
 // import Modal from "../Components/UI/Modal/Modal";
+import LoadingScreen from "../Components/UI/LoadingScreen/LoadingScreen";
 
 import "./Buy.css";
 
@@ -17,9 +18,10 @@ function BuyForm() {
         owner: "1",
         mileage: "",
 
-        max_power: "",
-        seats: "",
+        max_power: "110",
+        seats: "4",
     });
+    const [loading, setLoading] = useState(false);
 
     // const [show, setShow] = useState(true);
 
@@ -43,6 +45,7 @@ function BuyForm() {
             .then((response) => response.json())
             .then((data) => {
                 setResult(data.result);
+                setLoading(false);
             })
             .catch((error) => console.error(error));
     };
@@ -63,6 +66,7 @@ function BuyForm() {
                         <Form
                             heading="Recommendation Form"
                             handleSubmit={handleSubmit}
+                            loading={() => { setLoading(true) }}
                             year={inputData.year}
                             onChangeYear={(e) =>
                                 setInputData({ ...inputData, year: e.target.value })
@@ -103,19 +107,19 @@ function BuyForm() {
                         />
                     </ToggleVisiblity>
                 </div>
-                <div className="flex flex-wrap">
-                    {carArr.map((car, key) => (
-                        <span
-                            key={key}
-                            className="justify-center mx-0.5 hover:shadow-2xl my-2 item"
-                        >
-                            <a href="/car-information">
-                                <CarDetails key={key} car={car} alt={car} />
-                            </a>
-                        </span>
-                    ))}
-                    {/* </Card> */}
-                </div>
+                {loading ? <LoadingScreen />
+                    : <div className="flex flex-wrap">
+                        {carArr.map((car, key) => (
+                            <span
+                                key={key}
+                                className="justify-center mx-0.5 hover:shadow-2xl my-2 item"
+                            >
+                                <a href="/car-information">
+                                    <CarDetails key={key} car={car} alt={car} />
+                                </a>
+                            </span>
+                        ))}
+                    </div>}
             </div>
         </>
     );

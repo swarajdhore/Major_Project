@@ -6,7 +6,7 @@
       "contentHash": "dec1fcec2d28497047b6f869501347f6",
       "sourceName": "contracts/VehicleManagement.sol",
       "solcConfig": {
-        "version": "0.8.17",
+        "version": "0.8.19",
         "settings": {
           "optimizer": {
             "enabled": false,

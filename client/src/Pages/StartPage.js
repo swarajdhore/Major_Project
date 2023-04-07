@@ -22,7 +22,7 @@ function StartPage() {
         {/* <h1 className="heading">Hello World</h1> */}
         <Information />
       </div>
-      <div>
+      <div className="z-10 absolute bottom-2 right-2">
         <ChatBot />
       </div>
       {/* <div>

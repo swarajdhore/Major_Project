@@ -19,7 +19,7 @@ function CarDetails(props) {
       <p className="text-white">{car.index}</p>
       {/* <div className="comments-container">{props.name}</div> */}
       {/* {props.alt} */}
-      <p>Engine: {car.engine}</p>
+      {/* <p>Engine: {car.engine}</p>
       <p>Fuel: {car.fuel}</p>
       <p>Id: {car.id}</p>
       <p>Kilometers Driven: {car.km_driven}</p>
@@ -29,7 +29,7 @@ function CarDetails(props) {
       <p>Seats: {car.seats}</p>
       <p>Selling Price: {car.selling_price}</p>
       <p>Transmission: {car.transmission}</p>
-      <p>Year: {car.year}</p>
+      <p>Year: {car.year}</p> */}
       {/* </Card> */}
       {/* </div> */}
     </div>

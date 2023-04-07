@@ -1,8 +1,7 @@
 import React from "react";
 import "./Form.css";
 
-function Form(props) {
-  // const [loading, setLoading] = useState(false);
+function FormPred(props) {
   console.log(props.car);
   return (
     <form onSubmit={props.handleSubmit} className="grid grid-row-2">
@@ -10,6 +9,53 @@ function Form(props) {
         <h1 className=" text-black">{props.heading}</h1>
       </div>
       <div className="grid grid-cols-3 gap-2 mb-6 md:mb-0">
+        <div className="">
+          <label
+            className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+            htmlFor="Car"
+          >
+            Car
+          </label>
+          <select
+            type="string"
+            name="Car"
+            className="appearance-none  bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 w-full rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+            value={props.car}
+            onChange={props.onChangeCar}
+          >
+            <option value="1">Skoda</option>
+            <option value="2">Maruti</option>
+            <option value="3">Honda</option>
+            <option value="4">Hyundai</option>
+            <option value="5">Toyota</option>
+            <option value="6">Ford</option>
+            <option value="7">Renault</option>
+            <option value="8">Mahindra</option>
+            <option value="9">Tata</option>
+            <option value="10">Chevrolet</option>
+            <option value="11">Datsun</option>
+            <option value="12">Jeep</option>
+            <option value="13">Mercedes-Benz</option>
+            <option value="14">Mitsubishi</option>
+            <option value="15">Audi</option>
+            <option value="16">Volkswagen</option>
+            <option value="17">BMW</option>
+            <option value="18">Nissan</option>
+            <option value="19">Lexus</option>
+            <option value="20">Jaguar</option>
+            <option value="21">Land</option>
+            <option value="22">MG</option>
+            <option value="23">Volvo</option>
+            <option value="24">Daewoo</option>
+            <option value="25">Kia</option>
+            <option value="26">Fiat</option>
+            <option value="27">Force</option>
+            <option value="28">Ambassador</option>
+            <option value="29">Ashok</option>
+            <option value="30">Isuzu</option>
+            <option value="31">Opel</option>
+          </select>
+        </div>
         <div className="">
           <label
             className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
@@ -25,7 +71,7 @@ function Form(props) {
             onChange={props.onChangeYear}
           />
         </div>
-        <div className=" ">
+        {/* <div className=" ">
           <label
             className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
             for="sp"
@@ -46,7 +92,7 @@ function Form(props) {
             <option value="800000">700000 to 900000</option>
             <option value="1000000">900000 to 1100000</option>
           </select>
-        </div>
+        </div> */}
         <div className="  ">
           <label
             className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
@@ -199,7 +245,6 @@ function Form(props) {
 
       <button
         type="submit"
-        onClick={props.loading}
         className=" mx-5 rounded-md border bg-slate-800 text-white border-gray-600  py-1.5 text-base font-semibold leading-7 hover:text-gray-700 hover:bg-gray-600"
       >
         Submit
@@ -208,4 +253,4 @@ function Form(props) {
   );
 }
 
-export default Form;
+export default FormPred;
