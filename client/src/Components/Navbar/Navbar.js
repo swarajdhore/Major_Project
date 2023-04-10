@@ -52,6 +52,7 @@ function Navbar() {
   useEffect(() => {
     checkRegistrationStatus();
     if (buttonClicked) {
+      console.log("Hello");
       if (typeof window.ethereum !== "undefined") {
         const maskEnable = async () => {
           try {
@@ -62,6 +63,7 @@ function Navbar() {
             const signer = provider.getSigner();
             const address = await signer.getAddress();
             setAccount(address);
+            setButtonClicked(false);
           } catch (e) {
             setButtonClicked(false);
           }

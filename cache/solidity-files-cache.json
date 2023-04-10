@@ -2,8 +2,8 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "D:\\SVPCET\\4th Year\\Final_Year_Project\\CarTradingProject\\contracts\\VehicleManagement.sol": {
-      "lastModificationDate": 1679985162760,
-      "contentHash": "dec1fcec2d28497047b6f869501347f6",
+      "lastModificationDate": 1681136119046,
+      "contentHash": "42e291b0e5eb81b37aaf0d8d3d14d4a6",
       "sourceName": "contracts/VehicleManagement.sol",
       "solcConfig": {
         "version": "0.8.19",

@@ -1,7 +1,9 @@
+
 import React, { useState } from "react";
 import Form from "../Components/UI/Form/Form";
 import ToggleVisiblity from "../Components/UI/ToggleVisiblity";
-import CarDetails from "../Components/CarDetails/CarDetails";
+import { CarDetails } from "../Components/CarDetails/CarDetails";
+import CarPage from "./CarPage";
 // import Modal from "../Components/UI/Modal/Modal";
 import LoadingScreen from "../Components/UI/LoadingScreen/LoadingScreen";
 
@@ -27,7 +29,7 @@ function BuyForm() {
 
     const image = process.env.PUBLIC_URL + "/images/Cars/";
 
-    const [result, setResult] = useState("");
+    const [result, setResult] = useState([]);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -52,7 +54,7 @@ function BuyForm() {
 
 
     const carArr = Object.values(result);
-    // console.log(result);
+    console.log(result);
     // console.log(result["Datsun GO Plus D1"]);
     // console.log(carArr[0]);
 
@@ -116,6 +118,7 @@ function BuyForm() {
                             >
                                 <a href="/car-information">
                                     <CarDetails key={key} car={car} alt={car} />
+                                    {/* <CarPage key={key} car={car} /> */}
                                 </a>
                             </span>
                         ))}
