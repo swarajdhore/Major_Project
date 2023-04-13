@@ -3,13 +3,11 @@ import { ethers } from 'ethers';
 import VehicleManagement from "../artifacts/contracts/VehicleManagement.sol/VehicleManagement.json";
 import Navbar from '../Components/Navbar/Navbar';
 
-const contractAddress = '0x5FbDB2315678afecb367f032d93F642f64180aa3';
-const provider = new ethers.providers.JsonRpcProvider('http://localhost:8545');
-const contract = new ethers.Contract(
-    contractAddress,
-    VehicleManagement.abi,
-    provider
-);
+const contractAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
+console.log(contractAddress)
+const provider = new ethers.providers.Web3Provider(window.ethereum);
+const signer = provider.getSigner();
+const vehicleManagementContract = new ethers.Contract(contractAddress, VehicleManagement.abi, signer);
 
 function Profile() {
     const [user, setUser] = useState(null);
@@ -25,7 +23,7 @@ function Profile() {
             // const userExists = await contract.getUserDetails(userAddress).exists();
             // console.log(userExists)
             // if (userExists) {
-            userData = await contract.getUserDetails(userAddress);
+            userData = await vehicleManagementContract.getUserDetails(userAddress);
             console.log(userData)
             console.log(userData[0])
             setUser({

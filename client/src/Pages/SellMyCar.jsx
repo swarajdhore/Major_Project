@@ -27,7 +27,7 @@ function SellMyCar() {
         try {
             // Call the setVehiclePrice function
             const transaction = await vehicleManagementContract.setVehiclePrice(carNumberPlate, price);
-
+            console.log(transaction)
             // Wait for the transaction to be mined
             await transaction.wait();
 
@@ -57,6 +57,7 @@ function SellMyCar() {
                 </form>
                 {successMessage && <p>{successMessage}</p>}
             </div>
+
             {/* <div className="footer">
                 <Footer />
             </div> */}

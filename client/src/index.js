@@ -15,6 +15,7 @@ import SellMyCar from "./Pages/SellMyCar";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 import Register from "./Components/UI/Modal/Register";
+import BuyCar from "./Pages/BuyCar";
 
 const router = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
   {
     path: "/sellmycar",
     element: <SellMyCar />,
+  },
+  {
+    path: "/buycar",
+    element: <BuyCar />,
   },
   {
     path: "/car-information",

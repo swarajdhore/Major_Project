@@ -51,6 +51,13 @@ function Navbar() {
 
   useEffect(() => {
     checkRegistrationStatus();
+    window.ethereum.on("chainChanged", () => {
+      window.location.reload();
+    });
+
+    window.ethereum.on("accountsChanged", () => {
+      window.location.reload();
+    });
     if (buttonClicked) {
       console.log("Hello");
       if (typeof window.ethereum !== "undefined") {
@@ -68,19 +75,14 @@ function Navbar() {
             setButtonClicked(false);
           }
         };
-        const loadProvider = async () => {
-          const provider = new ethers.providers.Web3Provider(window.ethereum);
-          if (provider) {
-            window.ethereum.on("chainChanged", () => {
-              window.location.reload();
-            });
 
-            window.ethereum.on("accountsChanged", () => {
-              window.location.reload();
-            });
-          }
-        };
-        maskEnable() || loadProvider();
+        // const loadProvider = async () => {
+        //   const provider = new ethers.providers.Web3Provider(window.ethereum);
+        //   if (provider) {
+
+        //   }
+        // };
+        maskEnable();
       }
     }
   }, [buttonClicked]);
@@ -138,7 +140,7 @@ function Navbar() {
             {window.ethereum ? (
               isRegistered ? (
                 <p class="ml-10 block px-4 py-2 text-sm text-gray-700">
-                  Profile Complete 100% .
+                  Profile Complete 100%.
                 </p>
               ) : (
                 <Register />

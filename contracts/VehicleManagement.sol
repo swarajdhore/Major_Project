@@ -26,13 +26,34 @@ contract VehicleManagement {
         bool exists;
     }
 
+    struct VehicleDetails {
+        string carName;
+        uint256 year;
+        string numberPlate;
+        string ownerName;
+        uint256 price;
+    }
+
     bool autoTransfer = false;
     mapping(uint256 => Vehicle) public vehicles;
     mapping(address => User) public users;
     mapping(address => UserDetails) public userdetails;
     mapping(address => uint256[]) public vehicleOwned;
+    mapping(address => string) userNames;
     uint256 public totalVehicles;
+    mapping(uint256 => uint256) public vehiclesWithPriceSet;
+    // mapping(uint256 => uint256[]) public vehiclesWithPriceSet;
+    // uint256[] public vehiclesWithPriceSet;
+    address owner;
+    uint public counter = 0;
 
+    modifier onlyOwner() {
+        require(
+            msg.sender == owner,
+            "Only the contract owner can perform this action"
+        );
+        _;
+    }
     modifier onlyBy(address _account) {
         require(msg.sender == _account, "Sender not authorized.");
         _;
@@ -63,6 +84,36 @@ contract VehicleManagement {
             2010,
             0x70997970C51812dc3A010C7d01b50e0d17dc79C8
         );
+        // register(
+        //     "Swaraj",
+        //     21,
+        //     "swaraj@xyz.com",
+        //     0x70997970C51812dc3A010C7d01b50e0d17dc79C8
+        // );
+        // register(
+        //     "Anish",
+        //     21,
+        //     "anish@xyz.com",
+        //     0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
+        // );
+        // setVehiclePrice("MH04AA0001", 20);
+        // setVehiclePrice("MH31AC0002", 40);
+    }
+
+    function displayVehiclesforSale() public view returns (uint[] memory) {
+        uint[] memory indices = new uint[](totalVehicles);
+        uint count = 0;
+        for (uint i = 0; i < totalVehicles; i++) {
+            if (vehicles[i].priceSet == true) {
+                indices[count] = i;
+                count++;
+            }
+        }
+        uint[] memory result = new uint[](count);
+        for (uint i = 0; i < count; i++) {
+            result[i] = indices[i];
+        }
+        return result;
     }
 
     function getBalance() external view returns (uint256) {
@@ -75,6 +126,7 @@ contract VehicleManagement {
         string memory _numberPlate,
         uint256 _price
     ) public {
+        require(userdetails[msg.sender].exists, "User does not exist");
         User storage user = users[msg.sender];
         uint256 _id = totalVehicles;
         for (uint256 i = 0; i < totalVehicles; i++) {
@@ -94,6 +146,12 @@ contract VehicleManagement {
         );
         vehicle.price = _price;
         vehicle.priceSet = true;
+        vehiclesWithPriceSet[counter] = _id;
+        counter = counter + 1;
+        if (!vehicle.priceSet && _price > 0) {
+            vehicle.price = _price;
+            vehicle.priceSet = true;
+        }
     }
 
     function register(
@@ -103,6 +161,7 @@ contract VehicleManagement {
     ) public {
         require(!userdetails[msg.sender].exists, "User already exists");
         userdetails[msg.sender] = UserDetails(name, age, email, true);
+        userNames[msg.sender] = name;
     }
 
     function getUserDetails(
@@ -117,6 +176,7 @@ contract VehicleManagement {
     }
 
     function buyVehicle(string memory _numberPlate) public payable {
+        require(userdetails[msg.sender].exists, "User does not exist");
         uint256 _id = totalVehicles;
         for (uint256 i = 0; i < totalVehicles; i++) {
             if (
@@ -145,6 +205,35 @@ contract VehicleManagement {
         transferVehicle(_numberPlate, msg.sender);
         autoTransfer = false;
         vehicle.priceSet = false;
+    }
+
+    function getVehiclesWithPriceSet()
+        public
+        view
+        returns (VehicleDetails[] memory)
+    {
+        // uint256 count = 0;
+        // for (uint256 i = 0; i < vehiclesWithPriceSet.length; i++) {
+        //     if (vehicles[vehiclesWithPriceSet[i]].priceSet) {
+        //         count++;
+        //     }
+        // }
+        VehicleDetails[] memory result = new VehicleDetails[](counter);
+        uint256 index = 0;
+        for (uint256 i = 0; i < counter; i++) {
+            // Vehicle memory vehicleDetailsPriceSet = vehiclesWithPriceSet[i];
+            // if (vehicleDetailsPriceSet[i].priceSet) {
+            result[i] = VehicleDetails(
+                vehicles[vehiclesWithPriceSet[i]].carName,
+                vehicles[vehiclesWithPriceSet[i]].year,
+                vehicles[vehiclesWithPriceSet[i]].numberPlate,
+                userNames[vehicles[vehiclesWithPriceSet[i]].owner],
+                vehicles[vehiclesWithPriceSet[i]].price
+            );
+
+            // }
+        }
+        return result;
     }
 
     function addVehicle(
