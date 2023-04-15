@@ -1,15 +1,12 @@
-
 import React, { useState } from "react";
 import Form from "../Components/UI/Form/Form";
 import ToggleVisiblity from "../Components/UI/ToggleVisiblity";
 import { CarDetails } from "../Components/CarDetails/CarDetails";
-import CarPage from "./CarPage";
-// import Modal from "../Components/UI/Modal/Modal";
+// import CarPage from "./CarPage";
 import LoadingScreen from "../Components/UI/LoadingScreen/LoadingScreen";
 
 import "./Buy.css";
 
-// var carData;
 function BuyForm() {
     const [inputData, setInputData] = useState({
         year: "",
@@ -52,14 +49,9 @@ function BuyForm() {
             .catch((error) => console.error(error));
     };
 
-
     const carArr = Object.values(result);
     console.log(result);
-    // console.log(result["Datsun GO Plus D1"]);
-    // console.log(carArr[0]);
 
-    // const [cars] = carArr;
-    // console.log(carArray[result]);
     return (
         <>
             <div className="buy-container">
@@ -109,20 +101,20 @@ function BuyForm() {
                         />
                     </ToggleVisiblity>
                 </div>
-                {loading ? <LoadingScreen />
-                    : <div className="flex flex-wrap">
+                {loading ? (<LoadingScreen />)
+                    : (<div className="flex flex-wrap">
                         {carArr.map((car, key) => (
                             <span
                                 key={key}
                                 className="justify-center mx-0.5 hover:shadow-2xl my-2 item"
                             >
-                                <a href="/car-information">
-                                    <CarDetails key={key} car={car} alt={car} />
-                                    {/* <CarPage key={key} car={car} /> */}
-                                </a>
+                                {/* <a href="/car-information"> */}
+                                <CarDetails key={key} car={car} alt={car} />
+                                {/* <CarPage key={key} car={car} /> */}
+                                {/* </a> */}
                             </span>
                         ))}
-                    </div>}
+                    </div>)}
             </div>
         </>
     );

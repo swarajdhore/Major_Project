@@ -1,0 +1,114 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.img-container {
+  height: 280px;
+  width: 400px;
+  border-radius: 6px;
+}
+
+.bg-img {
+  /* display: flex;
+  justify-content: center; */
+  position: absolute;
+  top: 230px;
+  right: 50%;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+.car-info {
+  /* margin-top: 10vh; */
+  height: 100vh;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: -1;
+  background-position: center;
+  opacity: 0.9;
+  filter: blur(6px);
+  -webkit-filter: blur(6px);
+  /* user-drag: none; */
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+.info-container {
+  position: absolute;
+  top: 225px;
+  left: 50%;
+  color: #000;
+  font-family: "Poppins";
+  font-size: 20px;
+  align-items: center;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+/* .info-container {
+  position: relative;
+  top: 225px;
+  left: 50%;
+  color: #000;
+  font-family: "Poppins";
+  font-size: 20px;
+  align-items: center;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+
+  /* &::before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    //background-color: rgba(0,0,0,0.25);
+    background-color: rgba(152, 66, 211, 0.63);
+  } 
+} */
+
+/* .info-and-img-container {
+  color: #000; 
+  background-color: #000; 
+} */
+
+.group-of-four {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  /* align-items: center; */
+  color: #000;
+  font-weight: 800;
+  /* margin-left: 500px; */
+}
+
+.buy-button {
+  position: absolute;
+  top: 650px;
+  right: 55%;
+  font-size: 25px;
+}
+
+.name {
+  font-size: 35px;
+}
+
+.price {
+  font-size: 24px;
+}

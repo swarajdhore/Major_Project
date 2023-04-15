@@ -2,11 +2,11 @@ import React from "react";
 
 import "./Reviews.css";
 
-function Reviews() {
+function Reviews(props) {
   return (
     <div className="review-container">
-      <div className="image-container">Image</div>
-      <div className="comments-container">Comments</div>
+      {/* <div className="image-container">Image</div> */}
+      <div className="comments-container">{props.comments}</div>
     </div>
   );
 }

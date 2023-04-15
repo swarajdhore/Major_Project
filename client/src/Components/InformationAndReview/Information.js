@@ -38,17 +38,33 @@ function Information() {
             buying experience a breeze. So why wait? Stop by today and discover
             the thrill of driving your perfect car!"
           </span>
-          <img src="/images/vector-img/images.png" alt="vector-img" />
+          <img
+            className={`my-element ${isVisible ? "scroll-animation" : ""}`}
+            src="/images/vector-img/images.png"
+            alt="vector-img"
+          />
         </div>
         <div className="review-box">
-          <div className="review-box-1">
-            <Reviews />
+          <div
+            className={`my-element ${
+              isVisible ? "scroll-animation review-box-1" : ""
+            } `}
+          >
+            <Reviews comments="Using this car trading website was a game-changer for me. It was simple, quick, and hassle-free." />
           </div>
-          <div className="review-box-1">
-            <Reviews />
+          <div
+            className={`my-element ${
+              isVisible ? "scroll-animation review-box-1" : ""
+            } `}
+          >
+            <Reviews comments="I was blown away by how easy and efficient the process was. The website was user-friendly, and I received a competitive offer within minutes of entering my car's details." />
           </div>
-          <div className="review-box-1">
-            <Reviews />
+          <div
+            className={`my-element ${
+              isVisible ? "scroll-animation review-box-1" : ""
+            } `}
+          >
+            <Reviews comments="The process was straightforward, and I received a fair market value for my car. The customer service was excellent." />
           </div>
         </div>
       </div>

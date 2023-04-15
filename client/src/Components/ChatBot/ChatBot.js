@@ -49,7 +49,7 @@ function ChatBot() {
     setMessage("");
   };
   return (
-    <div>
+    <div className="">
       <ToggleVisibility buttonText={imgBot}>
         <div class="d-flex justify-content-center ">
           <div class=" d-flex justify-content-center">
@@ -59,17 +59,17 @@ function ChatBot() {
                 <span class="pb-3">Live chat</span>
                 <i class="fas fa-times"></i>
               </div>
-              <div className="text-xs">
+              <div className="chat-bot-wrapper text-xs">
                 {chatHistory.map((chat, index) => (
                   <div key={index}>
                     <div class="d-flex flex-column p-3">
-                      <img src={imageU} width="30" height="30" />
+                      {/* <img src={imageU} width="30" height="30" /> */}
                       <div class="text-xs chat ml-2 p-3">{chat.user}</div>
                     </div>
                     <div class="bg-white mr-2 p-3">
                       <span class="text-muted">{chat.bot}</span>
                     </div>
-                    <img src={imageB} width="30" height="30" />
+                    {/* <img src={imageB} width="30" height="30" /> */}
                   </div>
                 ))}
               </div>

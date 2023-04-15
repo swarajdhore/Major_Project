@@ -45,3 +45,13 @@ body {
   font-size: 8px;
   color: #c4c4c4;
 }
+
+/* .chat-bot-wrapper {
+  height: 30vh;
+  /* overflow: scroll; 
+} */
+
+.chat-bot-wrapper {
+  height: 200px;
+  overflow: scroll;
+}

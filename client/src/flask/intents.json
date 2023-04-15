@@ -1,48 +1,113 @@
-{"intents": [
-        {"context": ["greeting"],
-         "patterns": ["Hi there", "How are you", "Is anyone there?","Hey","Hola", "Hello", "Good day"],
-         "responses": ["Hello, thanks for asking", "Good to see you again", "Hi there, how can I help?"],
-         "tag": "greeting"
-        },
-        {"context": ["goodbye"],
-         "patterns": ["Bye", "See you later", "Goodbye", "Nice chatting to you, bye", "Till next time"],
-         "responses": ["See you!", "Have a nice day", "Bye! Come back again soon."],
-         "tag": "goodbye"
-        },
-        {"context": ["thanks"],
-         "patterns": ["Thanks", "Thank you", "That's helpful", "Awesome, thanks", "Thanks for helping me"],
-         "responses": ["Happy to help!", "Any time!", "My pleasure"],
-         "tag": "thanks"
-        },
-        {"context": ["noanswer"],
-         "patterns": [],
-         "responses": ["Sorry, can't understand you", "Please give me more info", "Not sure I understand"],
-         "tag": "noanswer"
-        },
-        {"context": ["options"],
-         "patterns": ["How you could help me?", "What you can do?", "What help you provide?", "How you can be helpful?", "What support is offered"],
-         "responses": ["I can guide you to buy and sell the car"],
-         "tag": "options"
-        },
-        {"context": ["buy"],
-         "patterns": ["How can I buy the car? ", "Steps to buy the car", "How to uy the car?", "Documents needed to buy the car" ],
-         "responses": ["Navigate to the Buy section"],
-         "tag": "buy"
-        },
-        {"context": ["sell"],
-         "patterns": ["How to sell the car?", "I want to sell my Car", "Steps to Sell the car", "Which information should e uploaded to sell the car?"],
-         "responses": ["Navigate to sell section"],
-         "tag": "sell"
-        },
-        {"context": ["report"],
-         "patterns": ["How do I report the problem?", "How can I contact the sellers?", ""],
-         "responses": ["Please provide Patient ID", "Patient ID?"],
-         "tag": "report"
-        }, 
-        {"context": [""],
-         "patterns": [],
-         "responses": ["Contact the team"],
-         "tag": "default"
-        }
-   ]
+{
+  "intents": [
+    {
+      "context": ["greeting"],
+      "patterns": [
+        "Hi there",
+        "How are you",
+        "Is anyone there?",
+        "Hey",
+        "Hola",
+        "Hello",
+        "Good day"
+      ],
+      "responses": [
+        "Hello, thanks for asking",
+        "Good to see you again",
+        "Hi there, how can I help?"
+      ],
+      "tag": "greeting"
+    },
+    {
+      "context": ["goodbye"],
+      "patterns": [
+        "Bye",
+        "See you later",
+        "Goodbye",
+        "Nice chatting to you, bye",
+        "Till next time"
+      ],
+      "responses": [
+        "See you!",
+        "Have a nice day",
+        "Bye! Come back again soon."
+      ],
+      "tag": "goodbye"
+    },
+    {
+      "context": ["thanks"],
+      "patterns": [
+        "Thanks",
+        "Thank you",
+        "That's helpful",
+        "Awesome, thanks",
+        "Thanks for helping me"
+      ],
+      "responses": ["Happy to help!", "Any time!", "My pleasure"],
+      "tag": "thanks"
+    },
+    {
+      "context": ["noanswer"],
+      "patterns": [],
+      "responses": [
+        "Sorry, can't understand you",
+        "Please give me more info",
+        "Not sure I understand"
+      ],
+      "tag": "noanswer"
+    },
+    {
+      "context": ["options"],
+      "patterns": [
+        "How you could help me?",
+        "What you can do?",
+        "What help you provide?",
+        "How you can be helpful?",
+        "What support is offered"
+      ],
+      "responses": ["I can guide you to buy and sell the car"],
+      "tag": "options"
+    },
+    {
+      "context": ["buy"],
+      "patterns": [
+        "How can I buy the car? ",
+        "Steps to buy the car",
+        "How to uy the car?",
+        "Documents needed to buy the car"
+      ],
+      "responses": ["Navigate to the Buy section"],
+      "tag": "buy"
+    },
+    {
+      "context": ["sell"],
+      "patterns": [
+        "How to sell the car?",
+        "I want to sell my Car",
+        "Steps to Sell the car",
+        "Which information should e uploaded to sell the car?"
+      ],
+      "responses": ["Navigate to sell section"],
+      "tag": "sell"
+    },
+    {
+      "context": ["report"],
+      "patterns": [
+        "How do I report the problem?",
+        "How can I contact the sellers?",
+        ""
+      ],
+      "responses": [
+        "You can contact our team at vahantrade@xyz.com",
+        "send query at vahantrade@xyz.com"
+      ],
+      "tag": "report"
+    },
+    {
+      "context": [""],
+      "patterns": [],
+      "responses": ["Contact the team"],
+      "tag": "default"
+    }
+  ]
 }

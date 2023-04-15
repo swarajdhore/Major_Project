@@ -1,9 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Hind:wght@500&family=Lato:wght@300&family=Poppins&display=swap");
+
 .container-style {
   height: 100%;
   position: relative;
 }
-
-@import url("https://fonts.googleapis.com/css2?family=Hind:wght@500&family=Lato:wght@300&family=Poppins&display=swap");
 
 .bg-image {
   opacity: 1;
@@ -81,44 +81,64 @@
   box-shadow: 3px 2px 2px rgba(73, 72, 72, 0.338);
 }
 
-.btn {
-  width: 6.5em;
-  height: 2.3em;
-  margin: 0.5em;
-  background-color: black;
-  color: white;
-  border: none;
-  border-radius: 0.625em;
-  font-size: 20px;
-  font-weight: bold;
-  cursor: pointer;
+.button {
+  --color: #00a97f;
+  /* --color: #000000 */
+  /* --color: hsla(0, 0%, 100%, 0.155); */
+  padding: 0.8em 1.7em;
+  background-color: transparent;
+  border-radius: 0.3em;
   position: relative;
-  z-index: 1;
   overflow: hidden;
+  cursor: pointer;
+  transition: 0.5s;
+  font-weight: bold;
+  font-size: 12px;
+  border: 1px solid;
+  font-family: inherit;
+  text-transform: uppercase;
+  color: #000;
+  z-index: 1;
+  margin-inline: 20px;
 }
 
-.btn:hover {
-  color: black;
-  background-color: #000;
-}
-
-.btn:after {
+.button::before,
+.button::after {
   content: "";
-  background: white;
+  display: block;
+  width: 50px;
+  height: 50px;
+  transform: translate(-50%, -50%);
   position: absolute;
+  border-radius: 50%;
   z-index: -1;
-  left: -20%;
-  right: -20%;
-  top: 0;
-  bottom: 0;
-  transform: skewX(-45deg) scale(0, 1);
-  transition: all 0.5s;
+  background-color: var(--color);
+  transition: 1s ease;
 }
 
-.btn:hover:after {
-  transform: skewX(-45deg) scale(1, 1);
-  -webkit-transition: all 0.5s;
-  transition: all 0.5s;
+.button::before {
+  top: -1em;
+  left: -1em;
+}
+
+.button::after {
+  left: calc(100% + 1em);
+  top: calc(100% + 1em);
+}
+
+.button:hover::before,
+.button:hover::after {
+  height: 410px;
+  width: 410px;
+}
+
+.button:hover {
+  color: rgb(10, 25, 30);
+  /* color: #000; */
+}
+
+.button:active {
+  filter: brightness(0.8);
 }
 
 /* a:link {

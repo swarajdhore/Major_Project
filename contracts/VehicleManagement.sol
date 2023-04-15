@@ -14,9 +14,21 @@ contract VehicleManagement {
         uint256 price;
         bool priceSet;
     }
+
+    struct VehiclesOwned {
+        uint256 id;
+        string numberPlate;
+        address userAddress;
+        string carName;
+        uint256 year;
+        uint256 ownerHistoryCount;
+    }
+
     struct User {
         address userAdd;
         uint256 currentVehicles;
+        uint256[] currentVehiclesID;
+        uint256 counterTotalVehiclesOwned;
     }
 
     struct UserDetails {
@@ -76,28 +88,18 @@ contract VehicleManagement {
             "MH31AC0002",
             "Honda City 2017-2020 EXi",
             2006,
-            0x70997970C51812dc3A010C7d01b50e0d17dc79C8
+            0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65
         );
         addVehicle(
             "TN04AD0003",
             "Hyundai i20 Sportz Diesel",
             2010,
-            0x70997970C51812dc3A010C7d01b50e0d17dc79C8
+            0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65
         );
-        // register(
-        //     "Swaraj",
-        //     21,
-        //     "swaraj@xyz.com",
-        //     0x70997970C51812dc3A010C7d01b50e0d17dc79C8
-        // );
-        // register(
-        //     "Anish",
-        //     21,
-        //     "anish@xyz.com",
-        //     0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
-        // );
-        // setVehiclePrice("MH04AA0001", 20);
-        // setVehiclePrice("MH31AC0002", 40);
+        // register("Swaraj",21,"swaraj@xyz.com", 0x70997970C51812dc3A010C7d01b50e0d17dc79C8);
+        // register("Anish",21,"anish@xyz.com", 0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2);
+        // setVehiclePrice("MH04AA0001",20);
+        // setVehiclePrice("MH31AC0002",40);
     }
 
     function displayVehiclesforSale() public view returns (uint[] memory) {
@@ -115,6 +117,45 @@ contract VehicleManagement {
         }
         return result;
     }
+
+    function displayVehiclesOwned(
+        address userAddress
+    ) public view returns (VehiclesOwned[] memory) {
+        // uint256[] memory indices = new uint256[](totalVehicles);
+        User storage user = users[userAddress];
+        uint256 count = user.currentVehicles;
+        uint256 total = user.counterTotalVehiclesOwned;
+
+        VehiclesOwned[] memory result = new VehiclesOwned[](count);
+        uint256 counting = 0;
+
+        for (uint i = 0; i < total; i++) {
+            uint256 id = user.currentVehiclesID[i];
+            // address[] memory list = getVehicleOwnerHistory(vehicles[id].numberPlate);
+            if (vehicles[id].owner == userAddress) {
+                result[counting++] = VehiclesOwned(
+                    vehicles[id].id,
+                    vehicles[id].numberPlate,
+                    userAddress,
+                    vehicles[id].carName,
+                    vehicles[id].year,
+                    vehicles[id].ownerHistoryCount
+                );
+            }
+        }
+        return result;
+    }
+
+    //     function displayVehiclesOwned(address userAddress) public view returns (Vehicle[] memory) {
+    //     User storage user = users[userAddress];
+    //     uint256 count = user.currentVehicles;
+    //     Vehicle[] memory result = new Vehicle[](count);
+    //     for (uint256 i = 0; i < count; i++) {
+    //         uint256 id = user.currentVehiclesID[i];
+    //         result[i] = vehicles[id];
+    //     }
+    //     return result;
+    // }
 
     function getBalance() external view returns (uint256) {
         return address(this).balance;
@@ -175,6 +216,22 @@ contract VehicleManagement {
         );
     }
 
+    //     function removeVehicleFromUser(address _user, uint256 _id) public onlyBy(_user) {
+
+    //     // uint256 index;
+    //     // bool found;
+    //     // for (uint256 i = 0; i < vehiclesOwned.length; i++) {
+    //     //     if (vehiclesOwned[i].id == _id) {
+    //     //         index = i;
+    //     //         found = true;
+    //     //         break;
+    //     //     }
+    //     // }
+    //     // require(found, "Vehicle not found in user's currentVehiclesOwned");
+    //     delete v[index];
+    //     user.currentVehicles--;
+    // }
+
     function buyVehicle(string memory _numberPlate) public payable {
         require(userdetails[msg.sender].exists, "User does not exist");
         uint256 _id = totalVehicles;
@@ -201,10 +258,14 @@ contract VehicleManagement {
         seller.transfer(msg.value);
         autoTransfer = true;
         User storage user = users[vehicle.owner];
+        // removeVehicleFromUser(vehicle.owner,_id);
+        delete user.currentVehiclesID[_id];
         user.currentVehicles--;
+
         transferVehicle(_numberPlate, msg.sender);
         autoTransfer = false;
         vehicle.priceSet = false;
+        counter = counter - 1;
     }
 
     function getVehiclesWithPriceSet()
@@ -239,7 +300,6 @@ contract VehicleManagement {
     function addVehicle(
         string memory _numberPlate,
         string memory _carName,
-        // string memory _model,
         uint256 _year,
         address _address
     ) public {
@@ -255,7 +315,13 @@ contract VehicleManagement {
         newVehicle.ownerHistory[0][totalVehicles] = _address;
         totalVehicles++;
         user.currentVehicles++;
+        user.counterTotalVehiclesOwned++;
+        user.currentVehiclesID.push(newVehicle.id);
+        // uint index = user.currentVehicles;
+        // user.currentVehiclesOwned[_address][index] = newVehicle;
+
         vehicleOwned[_address].push(newVehicle.id);
+        // Vehicle storage vehicle = vehicles[id];
     }
 
     function transferVehicle(
@@ -274,6 +340,7 @@ contract VehicleManagement {
         }
         require(_id < totalVehicles, "Invalid Number plate");
         User storage user = users[msg.sender];
+        user.counterTotalVehiclesOwned++;
         Vehicle storage vehicle = vehicles[_id];
         require(
             vehicle.owner == msg.sender || autoTransfer == true,
@@ -281,9 +348,11 @@ contract VehicleManagement {
         );
         vehicle.ownerHistory[vehicle.ownerHistoryCount][_id] = _newOwner;
         vehicle.ownerHistoryCount++;
-        // if (vehicle.ownerHistoryCount == 0) {
+
         user.currentVehicles++;
-        // }
+
+        // user.currentVehiclesOwned[_newOwner][index] = vehicle;
+        user.currentVehiclesID.push(_id);
 
         uint256[] storage ownerVehicles = vehicleOwned[msg.sender];
         for (uint256 i = 0; i < ownerVehicles.length; i++) {

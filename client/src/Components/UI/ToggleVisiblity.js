@@ -8,7 +8,7 @@ export default function ToggleVisibility({ children }) {
   function toggleShow() {
     setShow(!show);
   }
-  var buttonText = show ? "Hide Form" : "Show Form";
+  var buttonText = show ? "Close" : "Filters";
 
   return (
     <>

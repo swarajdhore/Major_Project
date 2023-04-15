@@ -11,7 +11,9 @@ const vehicleManagementContract = new ethers.Contract(contractAddress, VehicleMa
 
 function Profile() {
     const [user, setUser] = useState(null);
+    const [vehicles, setVehicles] = useState(null);
     var userData;
+    var vehicleData;
     var userAddress;
     var address = localStorage.getItem("account");
     useEffect(() => {
@@ -24,6 +26,14 @@ function Profile() {
             // console.log(userExists)
             // if (userExists) {
             userData = await vehicleManagementContract.getUserDetails(userAddress);
+            var vehicleDetails = await vehicleManagementContract.displayVehiclesforSale({ from: userAddress });
+            console.log(vehicleDetails)
+
+            vehicleData = await vehicleManagementContract.displayVehiclesOwned(userAddress);
+            console.log(vehicleData)
+            console.log(vehicleData[0])
+            console.log(vehicleData[0][1])
+
             console.log(userData)
             console.log(userData[0])
             setUser({
@@ -74,6 +84,7 @@ function Profile() {
                                             </tr>
                                         </tbody></table>
 
+
                                     {/* <div class="text-center my-3">
                                         <a class="text-xs text-indigo-500 italic hover:underline hover:text-indigo-600 font-medium" href="#">View Profile</a>
                                     </div> */}
@@ -82,6 +93,9 @@ function Profile() {
                             </div>
                         </div>
 
+                        <div>
+                            {/* TODO : Display vehicle data line number 32*/}
+                        </div>
                     </div>
                 </div>
             ) : (<h1>You aren't registered yet</h1>)}

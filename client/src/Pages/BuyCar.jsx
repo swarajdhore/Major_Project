@@ -64,17 +64,23 @@ function BuyCar() {
         // console.log(details)
         // setClicked(true);
     }
+
+
+
     return (
         <>
             <Navbar />
-            <button onClick={handleClick} className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>Show available cars</button>
-            {details ? (<SellingCars details={details} />) : "Hello"}
+            <button onClick={handleClick} className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>Get available cars</button>
+            {details != null ? (<SellingCars details={details} />) : "No Car Available"}
             <div class="AvailableCars"></div>
-            <form onSubmit={handleSubmit}>
-                <label>
+            <form onSubmit={handleSubmit} className="flex justify-center">
+                {/* <label className="">
                     Car number plate:
-                    <input type="text" value={carNumberPlate} onChange={(e) => setCarNumberPlate(e.target.value)} />
-                </label>
+                    <input type="text" className="rounded-lg" />
+                </label> */}
+                <div className="mb-3 pt-0">
+                    <input type="text" placeholder="Car Number Plate" value={carNumberPlate} onChange={(e) => setCarNumberPlate(e.target.value)} className="text-lg font-medium px-8 py-3 placeholder-slate-300 text-slate-600 relative bg-white  rounded border border-slate-300 outline-none focus:outline-none focus:ring w-full" />
+                </div>
                 <button type="submit">Buy and Transfer</button>
             </form>
             {successMessage && <p>{successMessage}</p>}
@@ -83,4 +89,4 @@ function BuyCar() {
     )
 }
 
-export default BuyCar
+export default BuyCar;

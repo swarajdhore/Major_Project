@@ -56,17 +56,18 @@ function BackgroundImageSlider() {
             ></span>
           ))}
         </div>
-        <div>
-          <button className="btn">
-            <a href="/buy">Buy</a>
-          </button>
+        {/* <div> */}
+        <button className="button">
+          <a href="/buy">Buy</a>
+        </button>
 
-          <button className="btn">
-            <a href="/sell">Sell</a>
-          </button>
+        <button className="button">
+          Sell
+          {/* <a href="/sell">Sell</a> */}
+        </button>
 
-          <button className="btn">Customize</button>
-        </div>
+        <button className="button">Customize</button>
+        {/* </div> */}
       </div>
     </>
   );

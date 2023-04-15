@@ -7,10 +7,11 @@ import App from "./App";
 import Buy from "./Pages/Buy";
 import Sell from "./Pages/Sell";
 import Profile from "./Pages/Profile";
-import { CarPage } from "./Components/CarDetails/CarDetails";
+// import { CarPage } from "./Components/CarDetails/CarDetails";
 import SellMyCar from "./Pages/SellMyCar";
 // import CarDetails from "./Components/CarDetails/CarDetails";
 // import "./App.css";
+import CarPage from "./Pages/CarPage";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
