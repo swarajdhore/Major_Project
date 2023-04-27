@@ -12,8 +12,9 @@ const vehicleManagementContract = new ethers.Contract(contractAddress, VehicleMa
 function Profile() {
     const [user, setUser] = useState(null);
     const [vehicles, setVehicles] = useState(null);
+    var [vehicleData, setVehicleData] = useState([]);
     var userData;
-    var vehicleData;
+    // var vehicleData;
     var userAddress;
     var address = localStorage.getItem("account");
     useEffect(() => {
@@ -26,27 +27,35 @@ function Profile() {
             // console.log(userExists)
             // if (userExists) {
             userData = await vehicleManagementContract.getUserDetails(userAddress);
-            var vehicleDetails = await vehicleManagementContract.displayVehiclesforSale({ from: userAddress });
-            console.log(vehicleDetails)
-
-            vehicleData = await vehicleManagementContract.displayVehiclesOwned(userAddress);
-            console.log(vehicleData)
-            console.log(vehicleData[0])
-            console.log(vehicleData[0][1])
-
-            console.log(userData)
-            console.log(userData[0])
             setUser({
                 name: userData[0],
                 age: userData[1].toNumber(),
                 email: userData[2]
             });
+            var vehicleDetails = await vehicleManagementContract.displayVehiclesforSale({ from: userAddress });
+            console.log(vehicleDetails)
+
+            vehicleData = await vehicleManagementContract.displayVehiclesOwned(userAddress);
+            setVehicleData(vehicleData);
+            console.log(vehicleData)
+            console.log(vehicleData[0])
+            console.log(vehicleData[0][0])
+
+            console.log(userData)
+            console.log(userData[0])
+
             // }
         }
         if (window.ethereum) {
             getUserDetails();
         }
     }, []);
+
+    const image = process.env.PUBLIC_URL + "/images/Cars/";
+
+
+
+    console.log(vehicleData);
 
 
     return (
@@ -57,7 +66,7 @@ function Profile() {
                 <div class="sticky top-0 bg-[url('https://images.unsplash.com/photo-1553095066-5014bc7b7f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bGlnaHRpbmd8ZW58MHx8MHx8&w=1000&q=80')] bg-no-repeat bg-cover">
 
                     {/* <img src="https://images.unsplash.com/photo-1553095066-5014bc7b7f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bGlnaHRpbmd8ZW58MHx8MHx8&w=1000&q=80" alt="John Doe" /> */}
-                    <div class="opacity-80 flex items-center h-screen w-full justify-center">
+                    <div class="opacity-80 flex flex-col items-center h-screen w-full justify-center">
 
                         <div class="max-w-4xl">
                             <div class="bg-white shadow-xl rounded-lg py-5">
@@ -93,8 +102,18 @@ function Profile() {
                             </div>
                         </div>
 
-                        <div>
+                        <div className="flex flex-row span-cont h-40">
                             {/* TODO : Display vehicle data line number 32*/}
+                            {vehicleData.map((vehicle, index) => (
+                                <div key={index} className="card-container text-white text-center ">
+                                    <img className="image-container" src={image + vehicle[3] + ".jpg"} alt="" />
+                                    {/* <p>Vehicle ID: {vehicle[0].toString()}</p> */}
+                                    <p>Vehicle ID: {vehicle[1].toString()}</p>
+                                    {/* <p>Make: {vehicle[1]}</p> */}
+                                    <p>Name: {vehicle[3].toString()}</p>
+                                    <p>Year: {vehicle[4].toString()}</p>
+                                </div>
+                            ))}
                         </div>
                     </div>
                 </div>
@@ -104,4 +123,3 @@ function Profile() {
 };
 
 export default Profile
-

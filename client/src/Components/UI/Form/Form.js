@@ -202,7 +202,7 @@ function Form(props) {
         onClick={props.loading}
         className=" mx-5 rounded-md border bg-slate-800 text-white border-gray-600  py-1.5 text-base font-semibold leading-7 hover:text-gray-700 hover:bg-gray-600"
       >
-        Submit
+        Check Car You want
       </button>
     </form>
   );

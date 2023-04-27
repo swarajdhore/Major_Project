@@ -52,6 +52,8 @@ const Register = () => {
     await transaction.wait();
 
     alert("Register successful!");
+    dispatch({ type: 'CLOSE_MODAL' })
+    window.location.reload(true);
   }
 
   return (
@@ -68,7 +70,7 @@ const Register = () => {
             onOpen={() => dispatch({ type: 'OPEN_MODAL' })}
             onClose={() => dispatch({ type: 'CLOSE_MODAL' })}
             trigger={<a
-              class="block px-4 py-2 text-sm text-gray-700"
+              class="block pl-16 py-2 text-sm text-gray-700"
               role="menuitem"
 
               id="user-menu-item-0"
@@ -78,49 +80,66 @@ const Register = () => {
                 Build Profile
               </button></a>}
           >
-            <form onSubmit={onSubmit}>
-              <Modal.Header>Register</Modal.Header>
-              <Modal.Content>
-
-                <div>
-                  <label htmlFor="name">Name:</label>
-                  <input
-                    type="text"
-                    id="name"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                  />
+            <div className="fixed z-50 inset-0 overflow-y-auto">
+              <div className="flex items-center justify-center min-h-screen px-4">
+                <div
+                  className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
+                />
+                <div className="bg-white rounded-lg overflow-hidden shadow-xl transform transition-all sm:max-w-lg sm:w-full">
+                  <div className="max-w-md mx-auto">
+                    <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={onSubmit}>
+                      <Modal.Header>
+                        <h1>
+                          Register
+                        </h1>
+                      </Modal.Header>
+                      <Modal.Content>
+                        <div className="m-6">
+                          <div >
+                            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">Name:</label>
+                            <input
+                              type="text"
+                              id="name"
+                              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                              value={name}
+                              onChange={(e) => setName(e.target.value)}
+                            />
+                          </div>
+                          <div>
+                            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="age">Age:</label>
+                            <input
+                              type="number"
+                              id="age"
+                              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                              value={age}
+                              onChange={(e) => setAge(e.target.value)}
+                            />
+                          </div>
+                          <div>
+                            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">Email:</label>
+                            <input
+                              type="email"
+                              id="email"
+                              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                              value={email}
+                              onChange={(e) => setEmail(e.target.value)}
+                            />
+                          </div>
+                        </div>
+                      </Modal.Content>
+                      <Modal.Actions>
+                        <Button onClick={() => dispatch({ type: 'CLOSE_MODAL' })} negative>
+                          No
+                        </Button>
+                        <Button type="submit" positive>
+                          Submit
+                        </Button>
+                      </Modal.Actions>
+                    </form>
+                  </div>
                 </div>
-                <div>
-                  <label htmlFor="age">Age:</label>
-                  <input
-                    type="number"
-                    id="age"
-                    value={age}
-                    onChange={(e) => setAge(e.target.value)}
-                  />
-                </div>
-                <div>
-                  <label htmlFor="email">Email:</label>
-                  <input
-                    type="email"
-                    id="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                </div>
-
-
-              </Modal.Content>
-              <Modal.Actions>
-                <Button onClick={() => dispatch({ type: 'CLOSE_MODAL' })} negative>
-                  No
-                </Button>
-                <Button type="submit" positive>
-                  Submit
-                </Button>
-              </Modal.Actions>
-            </form>
+              </div>
+            </div>
           </Modal>
         </Grid.Column>
       </Grid>

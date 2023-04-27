@@ -19,34 +19,37 @@ function CarPage(props) {
     height: "100%",
   };
 
+  // const data = false;
+
   return (
     <>
       {/* <AppContext.Consumer> */}
       <Navbar />
       {/* style={bgImageStyle} */}
-      <div>
+      <div className="img-wrapper relative">
         <img
           className="car-info"
           src={image + location.state.car.index + ".jpg"}
           alt={props.alt}
         />
       </div>
-      <div className="info-and-img-container">
-        <div className="bg-img">
+      {/* <div className=""> */}
+      <div className="info-and-img-container absolute inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 h-2/3 w-3/4 top-1/4 left-1/6">
+        <div className="bg-img top-1/4">
           <img
-            className="img-container"
+            className="img-container left-1/4 ml-12"
             src={image + location.state.car.index + ".jpg"}
             alt={props.alt}
           />
         </div>
-        <div className="info-container ">
+        <div className="info-container top-1/4 pl-96 text-white absolute inset-0 flex items-center justify-center flex-col">
           <p className="name">
             {/* {car.index} */}
             {/* Mercedes-Benz AMG GT */}
             {/* {car.index} */}
             {location.state.car.index}
           </p>
-          <div className="group-of-four">
+          <div className="group-of-four text-white">
             {/* <div className="comments-container"> */}
             {/* {car.index} */}
             {/* {car.alt} */}
@@ -60,12 +63,12 @@ function CarPage(props) {
               Fuel: {location.state.car.fuel}
               {/* {car.fuel} */}
             </p>
-            <p>
+            {/* <p>
               Id: {location.state.car.id}
-              {/* {car.id} */}
-            </p>
+              {/* {car.id} 
+            </p> */}
           </div>
-          <div className="group-of-four">
+          <div className="group-of-four text-white">
             <p>
               Kilometers Driven: {location.state.car.km_driven}
               {/* {car.kmDriven} */}
@@ -83,7 +86,7 @@ function CarPage(props) {
               {/* {car.owner} 
             </p> */}
           </div>
-          <div className="group-of-four">
+          <div className="group-of-four text-white ">
             <p>
               Seats: {location.state.car.seats}
               {/* {car.seats} */}
@@ -102,11 +105,12 @@ function CarPage(props) {
             </p>
           </div>
           {/* </div> */}
-        </div>
-        <div className="buy-button">
-          <button className="bg-black text-white">Buy</button>
+          <div>
+            <button className="button text-white"> Check availablity </button>
+          </div>
         </div>
       </div>
+      {/* </div> */}
       {/* </AppContext.Consumer> */}
     </>
   );

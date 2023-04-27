@@ -55,55 +55,55 @@ function SellForm() {
             <div className="sell-container">
 
                 <div className="grid place-items-center">
-                    <ToggleVisiblity>
-                        <FormPred
-                            heading="Price Prediction Form"
-                            handleSubmit={handleSubmit}
-                            car={inputData.car}
-                            onChangeCar={(e) =>
-                                setInputData({ ...inputData, car: e.target.value })
-                            }
-                            year={inputData.year}
-                            onChangeYear={(e) =>
-                                setInputData({ ...inputData, year: e.target.value })
-                            }
-                            // SellingPrice={inputData.sellPrice}
-                            // onChangeSellingPrice={(e) =>
-                            //     setInputData({ ...inputData, sellPrice: e.target.value })
-                            // }
-                            KmDriven={inputData.km_driven}
-                            onChangeKmDriven={(e) =>
-                                setInputData({ ...inputData, km_driven: e.target.value })
-                            }
-                            Fuel={inputData.fuel}
-                            onChangeFuel={(e) =>
-                                setInputData({ ...inputData, fuel: e.target.value })
-                            }
-                            Transmission={inputData.transmission}
-                            onChangeTransmission={(e) =>
-                                setInputData({ ...inputData, transmission: e.target.value })
-                            }
-                            Owner={inputData.owner}
-                            onChangeOwner={(e) =>
-                                setInputData({ ...inputData, owner: e.target.value })
-                            }
-                            Mileage={inputData.mileage}
-                            onChangeMileage={(e) =>
-                                setInputData({ ...inputData, mileage: e.target.value })
-                            }
-                            MaxPower={inputData.max_power}
-                            onChangeMaxPower={(e) =>
-                                setInputData({ ...inputData, max_power: e.target.value })
-                            }
-                            Seats={inputData.seats}
-                            onChangeSeats={(e) =>
-                                setInputData({ ...inputData, seats: e.target.value })
-                            }
-                        />
-                    </ToggleVisiblity>
+                    {/* <ToggleVisiblity> */}
+                    <FormPred
+                        heading="Get your vehicle's current market value here"
+                        handleSubmit={handleSubmit}
+                        car={inputData.car}
+                        onChangeCar={(e) =>
+                            setInputData({ ...inputData, car: e.target.value })
+                        }
+                        year={inputData.year}
+                        onChangeYear={(e) =>
+                            setInputData({ ...inputData, year: e.target.value })
+                        }
+                        // SellingPrice={inputData.sellPrice}
+                        // onChangeSellingPrice={(e) =>
+                        //     setInputData({ ...inputData, sellPrice: e.target.value })
+                        // }
+                        KmDriven={inputData.km_driven}
+                        onChangeKmDriven={(e) =>
+                            setInputData({ ...inputData, km_driven: e.target.value })
+                        }
+                        Fuel={inputData.fuel}
+                        onChangeFuel={(e) =>
+                            setInputData({ ...inputData, fuel: e.target.value })
+                        }
+                        Transmission={inputData.transmission}
+                        onChangeTransmission={(e) =>
+                            setInputData({ ...inputData, transmission: e.target.value })
+                        }
+                        Owner={inputData.owner}
+                        onChangeOwner={(e) =>
+                            setInputData({ ...inputData, owner: e.target.value })
+                        }
+                        Mileage={inputData.mileage}
+                        onChangeMileage={(e) =>
+                            setInputData({ ...inputData, mileage: e.target.value })
+                        }
+                        MaxPower={inputData.max_power}
+                        onChangeMaxPower={(e) =>
+                            setInputData({ ...inputData, max_power: e.target.value })
+                        }
+                        Seats={inputData.seats}
+                        onChangeSeats={(e) =>
+                            setInputData({ ...inputData, seats: e.target.value })
+                        }
+                    />
+                    {/* </ToggleVisiblity> */}
                 </div>
                 {loading ? <LoadingScreen /> :
-                    <div>Result: {result}</div>}
+                    <div className="text-3xl m-40">Result: {result} Rs (Estimated)</div>}
                 {/* <div className="body">
             Hi
             <Card />

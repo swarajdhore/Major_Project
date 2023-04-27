@@ -43,17 +43,32 @@ function SellMyCar() {
                 <Navbar />
 
             </div>
-            <div>
+            <div className="flex items-center justify-center increase-height">
                 <form onSubmit={handleSubmit}>
-                    <label>
-                        Car number plate:
-                        <input type="text" value={carNumberPlate} onChange={(e) => setCarNumberPlate(e.target.value)} />
-                    </label>
-                    <label>
-                        Price:
-                        <input type="number" value={price} onChange={(e) => setPrice(e.target.value)} />
-                    </label>
-                    <button type="submit">Set Price</button>
+                    <div className="mb-4">
+                        <label className="block text-gray-700 text-md font-bold mb-1">
+                            Car No. Plate
+                        </label>
+                        <input type="text" className="rounded-lg appearance-none border w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="exampleFormControlInput1" placeholder="Car Number Plate" value={carNumberPlate} onChange={(e) => setCarNumberPlate(e.target.value)} />
+                        {/* <div className="grid gap-6 mb-6 md:grid-cols-2"></div> */}
+                        {/* <div class="mb-3 pt-0">
+                        <label for="first_name" class=" mb-2 text-sm font-medium text-gray-900 dark:text-white">Car number plate:</label>
+                        <input type="text" value={carNumberPlate} onChange={(e) => setCarNumberPlate(e.target.value)} class="px-2 py-1 placeholder-slate-300 text-slate-600 relative bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full" placeholder="Car No. Plate" required />
+                    </div> */}
+                    </div>
+                    <div className="mb-4">
+                        <label className="block text-gray-700 text-md font-bold mb-1">
+                            Price:
+                        </label>
+                        <input type="number" className="rounded-lg appearance-none border w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" value={price} onChange={(e) => setPrice(e.target.value)} />
+                    </div>
+                    {/* <div class="mb-3 pt-0">
+                        <label for="first_name" class=" mb-2 text-sm font-medium text-gray-900 dark:text-white">Price:</label>
+                        <input type="text" value={price} onChange={(e) => setPrice(e.target.value)} class="px-2 py-1 placeholder-slate-300 text-slate-600 relative bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full" placeholder="Price" required />
+                    </div> */}
+                    <div>
+                        <button type="submit">Set Price</button>
+                    </div>
                 </form>
                 {successMessage && <p>{successMessage}</p>}
             </div>

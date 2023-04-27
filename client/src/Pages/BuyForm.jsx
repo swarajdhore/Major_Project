@@ -56,50 +56,50 @@ function BuyForm() {
         <>
             <div className="buy-container">
                 <div className="grid place-items-center">
-                    <ToggleVisiblity>
-                        <Form
-                            heading="Recommendation Form"
-                            handleSubmit={handleSubmit}
-                            loading={() => { setLoading(true) }}
-                            year={inputData.year}
-                            onChangeYear={(e) =>
-                                setInputData({ ...inputData, year: e.target.value })
-                            }
-                            SellingPrice={inputData.sellPrice}
-                            onChangeSellingPrice={(e) =>
-                                setInputData({ ...inputData, sellPrice: e.target.value })
-                            }
-                            KmDriven={inputData.km_driven}
-                            onChangeKmDriven={(e) =>
-                                setInputData({ ...inputData, km_driven: e.target.value })
-                            }
-                            Fuel={inputData.fuel}
-                            onChangeFuel={(e) =>
-                                setInputData({ ...inputData, fuel: e.target.value })
-                            }
-                            Transmission={inputData.transmission}
-                            OnChangeTransmission={(e) =>
-                                setInputData({ ...inputData, transmission: e.target.value })
-                            }
-                            Owner={inputData.owner}
-                            onChangeOwner={(e) =>
-                                setInputData({ ...inputData, owner: e.target.value })
-                            }
-                            Mileage={inputData.mileage}
-                            onChangeMileage={(e) =>
-                                setInputData({ ...inputData, mileage: e.target.value })
-                            }
-                            MaxPower={inputData.max_power}
-                            onChangeMaxPower={(e) =>
-                                setInputData({ ...inputData, max_power: e.target.value })
-                            }
-                            Seats={inputData.seats}
-                            onChangeSeats={
-                                (e) => setInputData({ ...inputData, seats: e.target.value })
-                                // Engine={}
-                            }
-                        />
-                    </ToggleVisiblity>
+                    {/* <ToggleVisiblity> */}
+                    <Form
+                        heading="Check The Desired Car! "
+                        handleSubmit={handleSubmit}
+                        loading={() => { setLoading(true) }}
+                        year={inputData.year}
+                        onChangeYear={(e) =>
+                            setInputData({ ...inputData, year: e.target.value })
+                        }
+                        SellingPrice={inputData.sellPrice}
+                        onChangeSellingPrice={(e) =>
+                            setInputData({ ...inputData, sellPrice: e.target.value })
+                        }
+                        KmDriven={inputData.km_driven}
+                        onChangeKmDriven={(e) =>
+                            setInputData({ ...inputData, km_driven: e.target.value })
+                        }
+                        Fuel={inputData.fuel}
+                        onChangeFuel={(e) =>
+                            setInputData({ ...inputData, fuel: e.target.value })
+                        }
+                        Transmission={inputData.transmission}
+                        OnChangeTransmission={(e) =>
+                            setInputData({ ...inputData, transmission: e.target.value })
+                        }
+                        Owner={inputData.owner}
+                        onChangeOwner={(e) =>
+                            setInputData({ ...inputData, owner: e.target.value })
+                        }
+                        Mileage={inputData.mileage}
+                        onChangeMileage={(e) =>
+                            setInputData({ ...inputData, mileage: e.target.value })
+                        }
+                        MaxPower={inputData.max_power}
+                        onChangeMaxPower={(e) =>
+                            setInputData({ ...inputData, max_power: e.target.value })
+                        }
+                        Seats={inputData.seats}
+                        onChangeSeats={
+                            (e) => setInputData({ ...inputData, seats: e.target.value })
+                            // Engine={}
+                        }
+                    />
+                    {/* </ToggleVisiblity> */}
                 </div>
                 {loading ? (<LoadingScreen />)
                     : (<div className="flex flex-wrap">

@@ -4,19 +4,26 @@
       "context": ["greeting"],
       "patterns": [
         "Hi there",
-        "How are you",
         "Is anyone there?",
         "Hey",
         "Hola",
         "Hello",
         "Good day"
       ],
-      "responses": [
-        "Hello, thanks for asking",
-        "Good to see you again",
-        "Hi there, how can I help?"
-      ],
+      "responses": ["Hello, Good to see you. How can I help you?"],
       "tag": "greeting"
+    },
+    {
+      "context": ["wellbeing"],
+      "patterns": ["How are you?", "What about you?", "What are you doing?"],
+      "responses": ["I am good. Just servicing you."],
+      "tag": "goodbye"
+    },
+    {
+      "context": ["introduction"],
+      "patterns": ["who are you?", "Are you a girl or boy?"],
+      "responses": ["I am Autobot. Here for your help"],
+      "tag": "introduction"
     },
     {
       "context": ["goodbye"],
@@ -28,9 +35,7 @@
         "Till next time"
       ],
       "responses": [
-        "See you!",
-        "Have a nice day",
-        "Bye! Come back again soon."
+        "See you! Stay connected with Vahan Trade and Accelerate your Life!"
       ],
       "tag": "goodbye"
     },
@@ -38,22 +43,22 @@
       "context": ["thanks"],
       "patterns": [
         "Thanks",
-        "Thank you",
+        "Thank you.",
         "That's helpful",
         "Awesome, thanks",
         "Thanks for helping me"
       ],
-      "responses": ["Happy to help!", "Any time!", "My pleasure"],
+      "responses": [
+        "Happy to help! Stay connected with Vahan Trade and Accelerate your Life!",
+        "Any time! Stay connected with Vahan Trade and Accelerate your Life!",
+        "My pleasure. Stay connected with Vahan Trade and Accelerate your Life!"
+      ],
       "tag": "thanks"
     },
     {
       "context": ["noanswer"],
       "patterns": [],
-      "responses": [
-        "Sorry, can't understand you",
-        "Please give me more info",
-        "Not sure I understand"
-      ],
+      "responses": ["Sorry, can't understand you", "Please give me more info"],
       "tag": "noanswer"
     },
     {
@@ -65,18 +70,34 @@
         "How you can be helpful?",
         "What support is offered"
       ],
-      "responses": ["I can guide you to buy and sell the car"],
+      "responses": [
+        "I can guide you to buy and sell the car also can give you the details of the team"
+      ],
       "tag": "options"
+    },
+    {
+      "context": ["team"],
+      "patterns": [
+        "who has developed this website?",
+        "Tell us about your team?",
+        "Inventors of Vahan Trade"
+      ],
+      "responses": [
+        "The enthusiastic students of SVPCET has developed this web application. Details: Swaraj Dhore, Shripad Dhopate, Anish Tilloo, Vedashree Joshi. Contact the team at ssav@gmail.com"
+      ],
+      "tag": "noanswer"
     },
     {
       "context": ["buy"],
       "patterns": [
         "How can I buy the car? ",
         "Steps to buy the car",
-        "How to uy the car?",
+        "How to buy the car?",
         "Documents needed to buy the car"
       ],
-      "responses": ["Navigate to the Buy section"],
+      "responses": [
+        "You can navigate to the Buy section. There you can get the recommendations of the cars according to your expectations"
+      ],
       "tag": "buy"
     },
     {
@@ -85,28 +106,26 @@
         "How to sell the car?",
         "I want to sell my Car",
         "Steps to Sell the car",
-        "Which information should e uploaded to sell the car?"
+        "Which information should be uploaded to sell the car?"
       ],
-      "responses": ["Navigate to sell section"],
+      "responses": [
+        "You can navigate to sell section. There you can get the true price of your car and also the car can be sold"
+      ],
       "tag": "sell"
     },
     {
       "context": ["report"],
       "patterns": [
         "How do I report the problem?",
-        "How can I contact the sellers?",
-        ""
+        "How can I contact the sellers?"
       ],
-      "responses": [
-        "You can contact our team at vahantrade@xyz.com",
-        "send query at vahantrade@xyz.com"
-      ],
+      "responses": ["mail your issues on ssav@gmail.com "],
       "tag": "report"
     },
     {
       "context": [""],
       "patterns": [],
-      "responses": ["Contact the team"],
+      "responses": ["Contact the team for more details"],
       "tag": "default"
     }
   ]

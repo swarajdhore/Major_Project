@@ -9,3 +9,118 @@
 .info-box {
   margin-block: 120px;
 }
+
+@import url("https://fonts.googleapis.com/css2?family=Hind:wght@500&family=Lato:wght@300&family=Poppins&family=Ubuntu:wght@300&display=swap");
+
+.card-container {
+  height: 550px;
+  width: 300px;
+  background-color: #192836;
+  /* background-color: #fff; */
+  /* padding-bottom: 25pxpx; */
+  margin: 20px;
+  font-size: 20px;
+  border-radius: 6px;
+}
+
+.span-cont {
+  height: 250px;
+}
+
+.image-container {
+  height: 180px;
+  width: 300px;
+  border-radius: 6px;
+  color: #fff;
+  padding: 0px;
+  margin: 0;
+  /* padding-block: 10px; */
+}
+
+.comments-container {
+  color: #fff;
+  /* padding-block: 10px; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* text-align: center; */
+
+  font-weight: 500;
+  /* font-family: "Popins"; */
+}
+
+.img-container {
+  height: 280px;
+  width: 400px;
+  border-radius: 6px;
+}
+
+.bg-img {
+  /* display: flex;
+  justify-content: center; */
+  position: absolute;
+  top: 230px;
+  right: 60%;
+}
+
+.car-info {
+  /* margin-top: 10vh; */
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: -1;
+  background-position: center;
+  /* background-image: url("https://stimg.cardekho.com/images/carexteriorimages/630x420/Mercedes-Benz/AMG-GT-4-Door-Coupe/9792/1681201395108/front-left-side-47.jpg?tr=w-456"); */
+  /* background-color: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)); */
+  /* background-blend-mode: darken; */
+  /* filter: brightness(20%); */
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url("https://stimg.cardekho.com/images/carexteriorimages/630x420/Mercedes-Benz/AMG-GT-4-Door-Coupe/9792/1681201395108/front-left-side-47.jpg?tr=w-456")
+      cover no-repeat;
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
+
+  filter: blur(4px);
+  -webkit-filter: blur(6px);
+}
+
+.info-container {
+  position: absolute;
+  top: 225px;
+  right: 30%;
+  color: #ffffff;
+  font-family: "Poppins";
+  font-size: 20px;
+  /* display: flex; */
+  /* flex-direction: row; */
+  /* justify-content: center; */
+  align-items: center;
+  /* margin-left: 100px; */
+  /* display: flex;
+  flex-direction: column; */
+}
+
+.group-of-four {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  /* align-items: center; */
+  color: #ffffff;
+  /* margin-left: 500px; */
+}
+
+.buy-button {
+  position: absolute;
+  top: 650px;
+  right: 55%;
+  font-size: 25px;
+}
+
+.name {
+  font-size: 35px;
+}
+
+.price {
+  font-size: 24px;
+}

@@ -88,7 +88,7 @@ def chatbot_response():
 
     # outputData = {"message" : res}
     return '{"message": "'+ res + '"}'
-
+  
 
 if __name__ == '__main__':
     app.run(host='localhost',debug=True, port=7000)

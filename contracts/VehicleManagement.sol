@@ -88,13 +88,13 @@ contract VehicleManagement {
             "MH31AC0002",
             "Honda City 2017-2020 EXi",
             2006,
-            0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65
+            0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
         );
         addVehicle(
             "TN04AD0003",
             "Hyundai i20 Sportz Diesel",
             2010,
-            0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65
+            0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
         );
         // register("Swaraj",21,"swaraj@xyz.com", 0x70997970C51812dc3A010C7d01b50e0d17dc79C8);
         // register("Anish",21,"anish@xyz.com", 0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2);

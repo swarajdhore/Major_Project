@@ -10,9 +10,9 @@ function Buy() {
   return (
     <div className="buy-container">
       <Navbar />
-      <div className="search-bar">
+      {/* <div className="search-bar">
         <SearchBar />
-      </div>
+      </div> */}
       <div>
         <BuyForm />
       </div>

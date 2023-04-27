@@ -10,6 +10,14 @@
   border-radius: 6px;
 }
 
+.img-wrapper {
+  margin-inline: 50px;
+}
+
+.info-and-img-container {
+  margin-inline: 50px;
+}
+
 .bg-img {
   /* display: flex;
   justify-content: center; */
@@ -44,7 +52,7 @@
 
 .info-container {
   position: absolute;
-  top: 225px;
+  top: 10%;
   left: 50%;
   color: #000;
   font-family: "Poppins";

@@ -5,7 +5,7 @@ import "./SellCarDetails.css";
 function SellCarDetails(props) {
   const image = process.env.PUBLIC_URL + "/images/Cars/";
   return (
-    <div className="card-container justify-center">
+    <div className="card-container-1 justify-center">
       <img
         className="image-container"
         src={image + props.name + ".jpg"}
