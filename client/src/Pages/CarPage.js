@@ -23,95 +23,48 @@ function CarPage(props) {
 
   return (
     <>
-      {/* <AppContext.Consumer> */}
-      <Navbar />
-      {/* style={bgImageStyle} */}
-      <div className="img-wrapper relative">
+      <span className="z-9999">
+        <Navbar />
+      </span>
+      <div className="wrapper-class ">
         <img
           className="car-info"
           src={image + location.state.car.index + ".jpg"}
           alt={props.alt}
         />
-      </div>
-      {/* <div className=""> */}
-      <div className="info-and-img-container absolute inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 h-2/3 w-3/4 top-1/4 left-1/6">
-        <div className="bg-img top-1/4">
-          <img
-            className="img-container left-1/4 ml-12"
-            src={image + location.state.car.index + ".jpg"}
-            alt={props.alt}
-          />
-        </div>
-        <div className="info-container top-1/4 pl-96 text-white absolute inset-0 flex items-center justify-center flex-col">
-          <p className="name">
-            {/* {car.index} */}
-            {/* Mercedes-Benz AMG GT */}
-            {/* {car.index} */}
-            {location.state.car.index}
-          </p>
-          <div className="group-of-four text-white">
-            {/* <div className="comments-container"> */}
-            {/* {car.index} */}
-            {/* {car.alt} */}
-            <p className="price">
+        {/* </div> */}
+        <div className="info-and-img-container">
+          <div className="img-bg">
+            <img
+              className="class-img "
+              src={image + location.state.car.index + ".jpg"}
+              alt={props.alt}
+            />
+          </div>
+          <div className="info-class ">
+            <p className="name-of-car">{location.state.car.index}</p>
+            <p className="price-of-car">
               &#8377; {location.state.car.selling_price}
-              {/* Selling Price: */}
-              {/* {car.sellPrice} */}
             </p>
-
-            <p>
-              Fuel: {location.state.car.fuel}
-              {/* {car.fuel} */}
-            </p>
-            {/* <p>
-              Id: {location.state.car.id}
-              {/* {car.id} 
-            </p> */}
-          </div>
-          <div className="group-of-four text-white">
-            <p>
-              Kilometers Driven: {location.state.car.km_driven}
-              {/* {car.kmDriven} */}
-            </p>
-            <p>
-              Max Power: {location.state.car.max_power}
-              {/* {car.maxPower} */}
-            </p>
-            <p>
-              Mileage: {location.state.car.mileage}
-              {/* {car.mileage} */}
-            </p>
-            {/* <p>
-              Owner: {location.state.car.owner}
-              {/* {car.owner} 
-            </p> */}
-          </div>
-          <div className="group-of-four text-white ">
-            <p>
-              Seats: {location.state.car.seats}
-              {/* {car.seats} */}
-            </p>
-            <p>
-              Engine: {location.state.car.engine}
-              {/* {car.engine} */}
-            </p>
-            <p>
-              Transmission: {location.state.car.transmission}
-              {/* {car.transmission} */}
-            </p>
-            <p>
-              Year: {location.state.car.year}
-              {/* {car.year} */}
-            </p>
-          </div>
-          {/* </div> */}
-          <div>
-            <button className="button text-white"> Check availablity </button>
+            <p>Fuel: {location.state.car.fuel}</p>
+            <p>Kilometers Driven: {location.state.car.km_driven}</p>
+            <p>Max Power: {location.state.car.max_power}</p>
+            <p>Mileage: {location.state.car.mileage}</p>
+            <p>Seats: {location.state.car.seats}</p>
+            <p>Engine: {location.state.car.engine}</p>
+            <p>Transmission: {location.state.car.transmission}</p>
+            <p>Year: {location.state.car.year}</p>
+            <div className="flex justify-evenly">
+              <button className="btn text-white px-2 mx-2">
+                <a href="/buycar" className="remove hover:text-white">
+                  Check availablity
+                </a>
+              </button>
+              {/* <button className="btn text-white px-2 mx-2">Buy Car</button> */}
+            </div>
           </div>
         </div>
       </div>
-      {/* </div> */}
-      {/* </AppContext.Consumer> */}
     </>
   );
 }

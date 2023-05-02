@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import { ethers } from 'ethers';
 import VehicleManagement from "../artifacts/contracts/VehicleManagement.sol/VehicleManagement.json";
 import Navbar from '../Components/Navbar/Navbar';
+import ErrorPage from '../Components/UI/UIPages/ErrorPages';
+
 
 const contractAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
 console.log(contractAddress)
@@ -117,7 +119,7 @@ function Profile() {
                         </div>
                     </div>
                 </div>
-            ) : (<h1>You aren't registered yet</h1>)}
+            ) : (<ErrorPage message="You aren't registered yet" />)}
         </>
     )
 };

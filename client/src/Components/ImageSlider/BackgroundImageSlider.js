@@ -32,11 +32,11 @@ function BackgroundImageSlider() {
     height: "100%",
   };
   return (
-    <>
-      <div className="bg-image" style={bgImageStyle}>
+    <div className="">
+      <div className=" z-1 bg-image rounded" style={bgImageStyle}>
         <div className="gradient"></div>
       </div>
-      <div className="transparent-background"></div>
+      <div className="z-9 transparent-background"></div>
       <div className="description">
         <div>
           {/* <Animate appear="fadeInDown" durationAppear={1000} component="h1"> */}
@@ -56,20 +56,25 @@ function BackgroundImageSlider() {
             ></span>
           ))}
         </div>
-        {/* <div> */}
-        <button className="button">
-          <a href="/buy">Buy</a>
-        </button>
+        <div className="z-999 px-2">
+          <button className="button route-btn px-4 mx-2 text-black">
+            <a href="/buy" className="hover:text-black text-black">
+              Buy
+            </a>
+          </button>
 
-        <button className="button">
-          Sell
-          {/* <a href="/sell">Sell</a> */}
-        </button>
+          <button className="button route-btn px-4 mx-2 text-black">
+            <a href="/sell" className="hover:text-black text-black">
+              Sell
+            </a>
+          </button>
 
-        <button className="button">Customize</button>
-        {/* </div> */}
+          <button className="button route-btn px-4 mx-2 text-black">
+            Customize
+          </button>
+        </div>
       </div>
-    </>
+    </div>
   );
 }
 

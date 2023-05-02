@@ -1,4 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
+
+// import { Element } from "react-scroll";
+// import { animateScroll as scroll, Events } from "react-scroll";
 
 import Navbar from "../Components/Navbar/Navbar";
 import BackgroundImageSlider from "../Components/ImageSlider/BackgroundImageSlider";
@@ -12,39 +15,55 @@ import ScrollAnimation from "react-animate-on-scroll";
 import "./StartPage.css";
 
 function StartPage() {
-  const animates = document.querySelectorAll(".scroll-animation");
+  // const animates = document.querySelectorAll(".scroll-animation");
 
-  const observer = new IntersectionObserver((entries) => {
-    console.log(entries);
-    entries.forEach(
-      (entry) => {
-        entry.target.classList.toggle("show", entry.isIntersecting);
-      },
-      {
-        threshold: 0.5,
-      }
-    );
-  });
+  // const observer = new IntersectionObserver((entries) => {
+  //   console.log(entries);
+  //   entries.forEach(
+  //     (entry) => {
+  //       entry.target.classList.toggle("show", entry.isIntersecting);
+  //     },
+  //     {
+  //       threshold: 0.5,
+  //     }
+  //   );
+  // });
 
-  animates.forEach((animate) => {
-    observer.observe(animate);
-  });
+  // animates.forEach((animate) => {
+  //   observer.observe(animate);
+  // });
+
+  // useEffect(() => {
+  //   Events.scrollEvent.register("begin", function (to, element) {
+  //     console.log("begin", arguments);
+  //   });
+
+  //   Events.scrollEvent.register("end", function (to, element) {
+  //     console.log("end", arguments);
+  //   });
+
+  //   return () => {
+  //     Events.scrollEvent.remove("begin");
+  //     Events.scrollEvent.remove("end");
+  //   };
+  // }, []);
 
   return (
     <div className="wrapper text-center text-3xl font-bold">
+      {/* <button onClick={() => scroll.scrollToBottom()}>Scroll to bottom</button> */}
       {/* <div className="navbar"> */}
       <Navbar />
       {/* </div> */}
-      <ScrollAnimation animateIn="fadeIn" animateOut="fadeOut">
-        <div className="container-style scroll-animation">
-          <BackgroundImageSlider />
-        </div>
-        <div className="scroll-animation">
-          {/* <h1 className="heading">Hello World</h1> */}
-          <Information />
-        </div>
-      </ScrollAnimation>
-      <div className="z-10 absolute bottom-2 right-2">
+      {/* <ScrollAnimation animateIn="fadeIn" animateOut="fadeOut"> */}
+      <div className="container-style scroll-animation">
+        <BackgroundImageSlider />
+      </div>
+      <div className="scroll-animation z-1">
+        {/* <h1 className="heading">Hello World</h1> */}
+        <Information />
+      </div>
+      {/* </ScrollAnimation> */}
+      <div className=" absolute bottom-2 right-2">
         <ChatBot />
       </div>
       {/* <div>

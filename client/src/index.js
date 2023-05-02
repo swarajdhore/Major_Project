@@ -17,6 +17,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 import Modal from "./Components/UI/Modal/Modal";
 import BuyCar from "./Pages/BuyCar";
+import Rto from "./Pages/Rto";
+import ErrorPage404 from "./Components/UI/UIPages/ErrorPage404";
+import Customize from "./Pages/Customize";
 
 const router = createBrowserRouter([
   {
@@ -44,12 +47,24 @@ const router = createBrowserRouter([
     element: <SellMyCar />,
   },
   {
+    path: "/rto",
+    element: <Rto />,
+  },
+  {
     path: "/buycar",
     element: <BuyCar />,
   },
   {
     path: "/car-information",
     element: <CarPage />,
+  },
+  {
+    path: "/customize",
+    element: <Customize />,
+  },
+  {
+    path: "*",
+    element: <ErrorPage404 />,
   },
 ]);
 

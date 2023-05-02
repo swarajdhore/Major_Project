@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 
-export default function ToggleVisibility({ children }) {
+import Close from "./Icons/Close";
+
+export default function ToggleVisibility({ children }, props) {
   // React state to manage visibility
   const [show, setShow] = useState(false);
 
@@ -8,7 +10,8 @@ export default function ToggleVisibility({ children }) {
   function toggleShow() {
     setShow(!show);
   }
-  var buttonText = show ? "Close" : "AutoBot";
+
+  var buttonText = show ? <Close /> : "";
   const image = process.env.PUBLIC_URL + "/images/logo/botimg-1.png";
 
   return (
@@ -16,15 +19,22 @@ export default function ToggleVisibility({ children }) {
       {show && children}
       <button
         onClick={toggleShow}
-        className="bg-gray-200 px-2 py-2 mx-2 my-2 rounded-lg font-medium flex justify-center"
+        className="bg-gray-200 px-2 py-2 mx-2 my-2 rounded-full font-medium flex justify-center"
       >
-        <img
-          src={image}
-          className="rounded-lg"
-          alt="img"
-          height="50px"
-          width="50px"
-        />
+        {props.messageCount > 0 && (
+          <span className="bg-red-500 rounded-full px-2">
+            {props.messageCount}
+          </span>
+        )}
+        {!show && (
+          <img
+            src={image}
+            className="rounded-full justify-center text-center"
+            alt="img"
+            height="50px"
+            width="50px"
+          />
+        )}
         {buttonText}
       </button>
     </>

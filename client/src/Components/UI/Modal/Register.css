@@ -1,10 +1,7 @@
-.sell-container {
-  background-color: #d7d2d8;
-  height: 100vh;
-}
-
-.increase-height {
-  height: 40vh;
+.register-modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .button {

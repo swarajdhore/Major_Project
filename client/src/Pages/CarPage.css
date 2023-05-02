@@ -4,6 +4,125 @@
   box-sizing: border-box;
 }
 
+.wrapper-class {
+  position: relative;
+}
+
+.car-info {
+  width: 100%;
+  height: 80vh;
+  position: relative;
+}
+
+.info-and-img-container {
+  display: flex;
+  justify-content: space-evenly;
+  position: absolute;
+  top: 18%;
+  left: 10%;
+  right: 10%;
+  background-color: rgba(0, 0, 0, 0.3);
+  height: 60vh;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.9);
+}
+
+.img-bg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-inline: 20px;
+}
+
+.class-img {
+  height: 250px;
+  border-radius: 6px;
+}
+
+.info-class {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: #fff;
+  font-family: "Poppins";
+}
+
+.name-of-car {
+  font-size: 35px;
+  font-weight: 400;
+}
+
+.price-of-car {
+  font-size: 30px;
+  font-weight: 400;
+}
+
+p {
+  font-size: 20px;
+  font-weight: 200;
+}
+
+.btn {
+  --color: #00a97f;
+  --color2: rgb(10, 25, 30);
+  border: #00a97f 2px solid;
+  padding: 0.8em 1.75em;
+  background-color: transparent;
+  border-radius: 6px;
+  border: 0.3px solid var(--color);
+  transition: 0.5s;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  z-index: 1;
+  font-weight: 300;
+  font-size: 17px;
+  font-family: "Roboto", "Segoe UI", sans-serif;
+  text-transform: uppercase;
+  color: var(--color);
+}
+
+.btn::after,
+.btn::before {
+  content: "";
+  display: block;
+  height: 100%;
+  width: 100%;
+  transform: skew(90deg) translate(-50%, -50%);
+  position: absolute;
+  inset: 50%;
+  left: 25%;
+  z-index: -1;
+  transition: 0.5s ease-out;
+  background-color: var(--color);
+}
+
+.btn::before {
+  top: -50%;
+  left: -25%;
+  transform: skew(90deg) rotate(180deg) translate(-50%, -50%);
+}
+
+.btn:hover::before {
+  transform: skew(45deg) rotate(180deg) translate(-50%, -50%);
+}
+
+.btn:hover::after {
+  transform: skew(45deg) translate(-50%, -50%);
+}
+
+.btn:hover {
+  color: var(--color2);
+}
+
+.btn:active {
+  filter: brightness(0.7);
+  transform: scale(0.98);
+}
+
+/*
 .img-container {
   height: 280px;
   width: 400px;
@@ -11,7 +130,8 @@
 }
 
 .img-wrapper {
-  margin-inline: 50px;
+  height: 90vh;
+  /* margin-inline: 0px; 
 }
 
 .info-and-img-container {
@@ -19,21 +139,13 @@
 }
 
 .bg-img {
-  /* display: flex;
-  justify-content: center; */
-  position: absolute;
-  top: 230px;
-  right: 50%;
-  user-select: none;
-  -moz-user-select: none;
-  -webkit-user-drag: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
+  /* display: flex; 
+  width: -30%;
 }
 
 .car-info {
-  /* margin-top: 10vh; */
-  height: 100vh;
+  /* margin-top: 10vh; 
+  height: 90vh;
   width: 100%;
   background-repeat: no-repeat;
   background-size: cover;
@@ -42,7 +154,7 @@
   opacity: 0.9;
   filter: blur(6px);
   -webkit-filter: blur(6px);
-  /* user-drag: none; */
+  /* user-drag: none; 
   user-select: none;
   -moz-user-select: none;
   -webkit-user-drag: none;
@@ -51,10 +163,14 @@
 }
 
 .info-container {
-  position: absolute;
-  top: 10%;
+  /* display: flex; 
+  width: -100%;
+  /* position: absolute;
+  top: 1%;
   left: 50%;
   color: #000;
+  padding-left: 100px;
+  padding-top: 20px;
   font-family: "Poppins";
   font-size: 20px;
   align-items: center;
@@ -62,7 +178,22 @@
   -moz-user-select: none;
   -webkit-user-drag: none;
   -webkit-user-select: none;
-  -ms-user-select: none;
+  -ms-user-select: none; 
+}
+
+.info-and-img-container {
+  /* display: fixed; 
+  display: flex;
+  /* justify-content: center; */
+/* align-items: center; */
+/* position: fixed; */
+/* position: absolute; */
+/* padding-inline: 20px; 
+  background-color: rgba(255, 255, 255, 0.5);
+  border: #000 2px solid;
+  /* padding-block: 20px; */
+/* apply the backdrop filter */
+/* backdrop-filter: blur(10px); *
 }
 
 /* .info-container {
@@ -94,16 +225,16 @@
 /* .info-and-img-container {
   color: #000; 
   background-color: #000; 
-} */
+} 
 
 .group-of-four {
   display: flex;
   flex-direction: column;
   /* justify-content: center; */
-  /* align-items: center; */
+/* align-items: center; *
   color: #000;
   font-weight: 800;
-  /* margin-left: 500px; */
+  /* margin-left: 500px; *
 }
 
 .buy-button {
@@ -119,4 +250,4 @@
 
 .price {
   font-size: 24px;
-}
+} */

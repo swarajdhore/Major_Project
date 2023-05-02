@@ -1,10 +1,50 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ToggleVisibility from "../UI/ToggleVisiblity";
+import SendButton1 from "../UI/Buttons/SendButton1";
 import "./ChatBot.css";
 
 function ChatBot() {
   const [message, setMessage] = useState("");
   const [chatHistory, setChatHistory] = useState([]);
+
+  const [show, setShow] = useState(false);
+  const [messageCount, setMessageCount] = useState(0);
+
+  // function to toggle the boolean value
+  function toggleShow() {
+    setShow(!show);
+  }
+
+  useEffect(() => {
+    // function sendFirstMessage() {
+    // TODO: Replace this with code to send a message to the chatbot
+    // setChatHistory((prevChatHistory) => [
+    //   ...prevChatHistory,
+    //   { user: message, bot: "Sending first message..." },
+    // ]);
+    function handleSendMessageForChatbot() {
+      // Your code to send the message through the chatbot goes here
+      setChatHistory(() => [
+        // ...prevChatHistory,
+        // user: message,
+        {
+          bot: `Hello! I am yours Autobot.
+                Always at your service.
+                Vahan Trade is here to bring your expectations into reality.
+                I can guide you about our Vahan Trade.
+                Ask away!`,
+        },
+      ]);
+
+      setMessageCount(messageCount + 1);
+    }
+    handleSendMessageForChatbot();
+    console.log("Sending first message...");
+    // }
+
+    // sendFirstMessage();
+    handleSendMessageForChatbot();
+  }, []);
 
   const handleMessageChange = (event) => {
     setMessage(event.target.value);
@@ -50,13 +90,13 @@ function ChatBot() {
   };
   return (
     <div className="">
-      <ToggleVisibility buttonText={imgBot}>
+      <ToggleVisibility buttonText={imgBot} messageCount={messageCount}>
         <div class="d-flex justify-content-center ">
           <div class=" d-flex justify-content-center">
             <div class="card mt-5">
               <div class="d-flex flex-row justify-content-between p-3 adiv bg-[#04CB28] text-white rounded-b-xl">
                 <i class="fas fa-chevron-left"></i>
-                <span class="pb-3">Live chat</span>
+                <span class="pb-3">AutoBot</span>
                 <i class="fas fa-times"></i>
               </div>
               <div className="chat-bot-wrapper text-xs">
@@ -73,14 +113,27 @@ function ChatBot() {
                   </div>
                 ))}
               </div>
-              <div class="form-group px-3 text-lg">
+              <div class="flex justify-evenly align-center form-group text-2xl">
                 <input
-                  class="form-control text-lg"
+                  class="form-control text-2xl py-3 mt-2.5"
                   placeholder="Type your message"
                   value={message}
                   onChange={handleMessageChange}
                 ></input>
-                <button onClick={handleSendMessage}>Send</button>
+                <button onClick={handleSendMessage}>
+                  <SendButton1 />{" "}
+                </button>
+                {/* <button
+                  onClick={handleSendMessage}
+                  className="btn btn-inside btn-boarder"
+                >
+                  <img
+                    src="https://i.cloudup.com/gBzAn-oW_S-2000x2000.png"
+                    width="64px"
+                    height="64px"
+                    id="plane"
+                  />
+                </button> */}
               </div>
             </div>
           </div>

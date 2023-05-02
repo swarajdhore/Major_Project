@@ -35,8 +35,8 @@ function Footer() {
         </div>
       </div>
       <footer class="mt-15 text-center text-white  background">
-        <div class="container pt-9 background">
-          <div class="mb-9 flex justify-center">
+        {/* <div class="container pt-9 background">
+          <div class="mb-9 flex justify-center text">
             <a href="#!" class="mr-9 text-neutral-800 dark:text-neutral-200">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -102,7 +102,7 @@ function Footer() {
               </svg>
             </a>
           </div>
-        </div>
+        </div> */}
 
         <div class="bg-neutral-300 p-4 text-center text-neutral-700 dark:bg-neutral-700 dark:text-neutral-200">
           © 2023 Copyright:

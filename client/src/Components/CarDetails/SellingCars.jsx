@@ -12,6 +12,7 @@ function SellingCars({ details }) {
                     year={detail.year}
                     numberPlate={detail.numberPlate}
                     price={detail.price}
+
                     userName={detail.userName}>
                     <div className="px-4" key={detail.carName}>
                         <h2>{detail.carName}</h2>

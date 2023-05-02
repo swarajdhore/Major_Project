@@ -104,10 +104,18 @@ function SellForm() {
                 </div>
                 {loading ? <LoadingScreen /> :
                     <div className="text-3xl m-40">Result: {result} Rs (Estimated)</div>}
+                <div className="flex justify-center item-center mt-0">
+                    <button className="button">
+                        <a href="/sellcar" className="hover:text-black">
+                            Sell Car
+                        </a>
+                    </button>
+                </div>
                 {/* <div className="body">
             Hi
             <Card />
           </div> */}
+
 
                 {/* <div className="footer">
             <Footer />

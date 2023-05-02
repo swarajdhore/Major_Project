@@ -70,6 +70,7 @@ contract VehicleManagement {
         require(msg.sender == _account, "Sender not authorized.");
         _;
     }
+    address rto;
 
     constructor() {
         addVehicle(
@@ -96,10 +97,84 @@ contract VehicleManagement {
             2010,
             0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
         );
+        addVehicle(
+            "TN04AD0003",
+            "Hyundai i20 Sportz Diesel",
+            2010,
+            0x70997970C51812dc3A010C7d01b50e0d17dc79C8
+        );
+        addVehicle(
+            "KA19AE0004",
+            "Maruti Swift VXI BSIII",
+            2007,
+            0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC
+        );
+        addVehicle(
+            "DL07AF0005",
+            "Hyundai Xcent 1.2 VTVT E Plus",
+            2017,
+            0x70997970C51812dc3A010C7d01b50e0d17dc79C8
+        );
+        addVehicle(
+            "TS10AG0006",
+            "Maruti 800 DX BSII",
+            2001,
+            0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC
+        );
+        addVehicle(
+            "MH04AH0007",
+            "Toyota Etios VXD",
+            2011,
+            0x70997970C51812dc3A010C7d01b50e0d17dc79C8
+        );
+        addVehicle(
+            "MH14AI0008",
+            "Ford Figo Diesel Celebration Edition",
+            2013,
+            0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC
+        );
+        addVehicle(
+            "MH31AJ0009",
+            "Renault Duster 110PS Diesel RxL",
+            2014,
+            0x69F22131F86bC5BD7A57a4B701ef7148256f2256
+        );
+        addVehicle(
+            "TN04AK0010",
+            "Maruti Zen LX",
+            2005,
+            0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65
+        );
+        addVehicle(
+            "KA19AL0011",
+            "Maruti Swift Dzire VDi",
+            2009,
+            0x69F22131F86bC5BD7A57a4B701ef7148256f2256
+        );
+        addVehicle(
+            " DL07AM0012",
+            "Maruti Wagon R LXI Minor",
+            2009,
+            0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65
+        );
+        addVehicle(
+            "TS10AN0013",
+            "Mahindra KUV 100 mFALCON G80 K8 5str",
+            2016,
+            0x69F22131F86bC5BD7A57a4B701ef7148256f2256
+        );
+        addVehicle(
+            "MH04AO0014",
+            "Maruti Ertiga SHVS VDI",
+            2016,
+            0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65
+        );
+
         // register("Swaraj",21,"swaraj@xyz.com", 0x70997970C51812dc3A010C7d01b50e0d17dc79C8);
         // register("Anish",21,"anish@xyz.com", 0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2);
         // setVehiclePrice("MH04AA0001",20);
         // setVehiclePrice("MH31AC0002",40);
+        rto = 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266;
     }
 
     function displayVehiclesforSale() public view returns (uint[] memory) {
@@ -390,4 +465,184 @@ contract VehicleManagement {
         }
         return ownerHistoryList;
     }
+
+    mapping(address => mapping(uint256 => string)) private documents;
+    mapping(address => mapping(uint256 => bool)) private approvalStatus;
+
+    function addDocument(
+        address user,
+        uint256 docId,
+        string memory docHash
+    ) public {
+        documents[user][docId] = docHash;
+    }
+
+    function verifyDocument(
+        address user,
+        uint256 docId
+    ) public view returns (bool) {
+        return (keccak256(bytes(documents[user][docId])) != keccak256(""));
+    }
+
+    function approveDocument(address user, uint256 docId) public {
+        require(msg.sender == rto, "You should be the contract owner");
+        approvalStatus[user][docId] = true;
+    }
+
+    function denyDocument(address user, uint256 docId) public {
+        require(msg.sender == rto, "You should be the contract owner");
+        approvalStatus[user][docId] = false;
+    }
+
+    function getDocumentHash(
+        address user,
+        uint256 docId
+    ) public view returns (string memory) {
+        return documents[user][docId];
+    }
+
+    function getApprovalStatus(
+        address user,
+        uint256 docId
+    ) public view returns (bool) {
+        return approvalStatus[user][docId];
+    }
+
+    // mapping(bytes32 => bool) public approvedFiles;
+    // mapping(bytes32 => bool) public deniedFiles;
+    // mapping(bytes32 => address) public fileOwners;
+    // mapping(address => mapping(bytes32 => bool)) public userFiles;
+
+    // event FileUploaded(bytes32 indexed fileHash, address indexed owner);
+    // event FileApproved(bytes32 indexed fileHash);
+    // event FileDenied(bytes32 indexed fileHash);
+
+    // function uploadFile(bytes32 fileHash) public {
+    //     require(fileOwners[fileHash] == address(0), "File already uploaded");
+
+    //     fileOwners[fileHash] = msg.sender;
+    //     userFiles[msg.sender][fileHash] = true;
+
+    //     emit FileUploaded(fileHash, msg.sender);
+    // }
+
+    // function approveFile(bytes32 fileHash) public {
+    //     require(fileOwners[fileHash] != address(0), "File does not exist");
+    //     require(
+    //         msg.sender == fileOwners[fileHash],
+    //         "Only file owner can approve"
+    //     );
+    //     require(!approvedFiles[fileHash], "File already approved");
+
+    //     approvedFiles[fileHash] = true;
+
+    //     emit FileApproved(fileHash);
+    // }
+
+    // function denyFile(bytes32 fileHash) external {
+    //     require(fileOwners[fileHash] != address(0), "File not found");
+    //     require(
+    //         msg.sender == fileOwners[fileHash],
+    //         "Only file owner can approve or deny"
+    //     );
+    //     deniedFiles[fileHash] = true;
+
+    //     emit FileDenied(fileHash);
+    // }
+
+    // function getApprovedFiles() public view returns (bytes32[] memory) {
+    //     bytes32[] memory approvedFileHashes = new bytes32[](
+    //         approvedFilesCount()
+    //     );
+    //     uint256 index = 0;
+    //     for (uint256 i = 0; i < getFilesCount(); i++) {
+    //         bytes32 fileHash = getFileHashAtIndex(i);
+    //         if (approvedFiles[fileHash]) {
+    //             approvedFileHashes[index] = fileHash;
+    //             index++;
+    //         }
+    //     }
+    //     return approvedFileHashes;
+    // }
+
+    // function getDeniedFiles() public view returns (bytes32[] memory) {
+    //     bytes32[] memory deniedFileHashes = new bytes32[](deniedFilesCount());
+    //     uint256 index = 0;
+    //     for (uint256 i = 0; i < getFilesCount(); i++) {
+    //         bytes32 fileHash = getFileHashAtIndex(i);
+    //         if (deniedFiles[fileHash]) {
+    //             deniedFileHashes[index] = fileHash;
+    //             index++;
+    //         }
+    //     }
+    //     return deniedFileHashes;
+    // }
+
+    // function approvedFilesCount() public view returns (uint256) {
+    //     uint256 count = 0;
+    //     for (uint256 i = 0; i < getFilesCount(); i++) {
+    //         bytes32 fileHash = getFileHashAtIndex(i);
+    //         if (approvedFiles[fileHash]) {
+    //             count++;
+    //         }
+    //     }
+    //     return count;
+    // }
+
+    // function deniedFilesCount() public view returns (uint256) {
+    //     uint256 count = 0;
+    //     for (uint256 i = 0; i < getFilesCount(); i++) {
+    //         bytes32 fileHash = getFileHashAtIndex(i);
+    //         if (deniedFiles[fileHash]) {
+    //             count++;
+    //         }
+    //     }
+    //     return count;
+    // }
+
+    // function getFilesCount() public view returns (uint256) {
+    //     uint256 count = 0;
+    //     for (uint256 i = 0; i < bytes32ArrayLength(fileOwners); i++) {
+    //         count++;
+    //     }
+    //     return count;
+    // }
+
+    // function getFileHashAtIndex(uint256 index) public view returns (bytes32) {
+    //     return bytes32ArrayElementAtIndex(fileOwners, index);
+    // }
+
+    // function bytes32ArrayElementAtIndex(
+    //     mapping(bytes32 => address) storage array,
+    //     uint256 index
+    // ) internal view returns (bytes32) {
+    //     bytes32[] memory keys = new bytes32[](bytes32ArrayLength(array));
+    //     uint256 count = 0;
+    //     for (uint256 i = 0; i < keys.length; i++) {
+    //         bytes32 key = keys[i];
+    //         if (array[key] != address(0)) {
+    //             if (count == index) {
+    //                 return key;
+    //             }
+    //             count++;
+    //         }
+    //     }
+    //     revert("Invalid index");
+    // }
+
+    // function bytes32ArrayLength(
+    //     mapping(bytes32 => address) storage array
+    // ) internal view returns (uint256) {
+    //     uint256 count = 0;
+    //     for (uint256 i = 0; ; i++) {
+    //         bytes32 key = bytes32(i);
+    //         if (array[key] != address(0)) {
+    //             count++;
+    //         }
+    //         if (i >= 2 ** 256 - 1) {
+    //             break;
+    //         }
+    //     }
+    //     return count;
+    // }
 }
